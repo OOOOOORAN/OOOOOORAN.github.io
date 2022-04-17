@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>HXDCHLl&#39;s Blog</title>
+  <icon>https://ooooooran.github.io/icon.png</icon>
+  
+  <link href="https://ooooooran.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://ooooooran.github.io/"/>
+  <updated>2022-04-13T09:31:01.571Z</updated>
+  <id>https://ooooooran.github.io/</id>
+  
+  <author>
+    <name>HXDCHLl</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>stl学习</title>
+    <link href="https://ooooooran.github.io/post/a02f0bef.html"/>
+    <id>https://ooooooran.github.io/post/a02f0bef.html</id>
+    <published>2022-04-08T07:11:08.000Z</published>
+    <updated>2022-04-13T09:31:01.571Z</updated>
+    
+    
+    <summary type="html">有东西被加密了, 请输入密码查看.</summary>
+    
+    
+    
+    <category term="计算机知识" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/"/>
+    
+    <category term="acwing" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/acwing/"/>
+    
+    <category term="stl" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/acwing/stl/"/>
+    
+    
+    <category term="acwing" scheme="https://ooooooran.github.io/tags/acwing/"/>
+    
+    <category term="stl" scheme="https://ooooooran.github.io/tags/stl/"/>
+    
+    <category term="c++" scheme="https://ooooooran.github.io/tags/c/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简单做题记录</title>
+    <link href="https://ooooooran.github.io/post/c99956.html"/>
+    <id>https://ooooooran.github.io/post/c99956.html</id>
+    <published>2022-04-08T03:04:05.000Z</published>
+    <updated>2022-04-14T13:59:07.252Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;xctf-babyre&quot;&gt;&lt;a href=&quot;#xctf-babyre&quot; class=&quot;headerlink&quot; title=&quot;xctf babyre&quot;&gt;&lt;/a&gt;xctf</summary>
+        
+      
+    
+    
+    
+    <category term="网络安全" scheme="https://ooooooran.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="reverse" scheme="https://ooooooran.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/reverse/"/>
+    
+    
+    <category term="ctf" scheme="https://ooooooran.github.io/tags/ctf/"/>
+    
+    <category term="reverse" scheme="https://ooooooran.github.io/tags/reverse/"/>
+    
+    <category term="学习记录" scheme="https://ooooooran.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux下的gaps安装和使用</title>
+    <link href="https://ooooooran.github.io/post/2d016062.html"/>
+    <id>https://ooooooran.github.io/post/2d016062.html</id>
+    <published>2022-01-26T09:47:38.000Z</published>
+    <updated>2022-04-08T07:11:33.051Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;今天复盘hwctf的gogogo时需要用到gaps和ImageMagic，于是学习了下如何使用gaps进行拼图，效果图如下：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;原图：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="网络安全" scheme="https://ooooooran.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="misc" scheme="https://ooooooran.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/misc/"/>
+    
+    
+    <category term="gaps安装" scheme="https://ooooooran.github.io/tags/gaps%E5%AE%89%E8%A3%85/"/>
+    
+    <category term="ctf" scheme="https://ooooooran.github.io/tags/ctf/"/>
+    
+    <category term="misc" scheme="https://ooooooran.github.io/tags/misc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>逆向做题记录</title>
+    <link href="https://ooooooran.github.io/post/34030ef6.html"/>
+    <id>https://ooooooran.github.io/post/34030ef6.html</id>
+    <published>2022-01-23T17:55:13.000Z</published>
+    <updated>2022-04-08T03:13:16.359Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;特殊的base64&quot;&gt;&lt;a href=&quot;#特殊的base64&quot; class=&quot;headerlink&quot; title=&quot;特殊的base64&quot;&gt;&lt;/a&gt;特殊的base64&lt;/h1&gt;&lt;p&gt;这道题故名思意</summary>
+        
+      
+    
+    
+    
+    <category term="网络安全" scheme="https://ooooooran.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="wp" scheme="https://ooooooran.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/wp/"/>
+    
+    
+    <category term="ctf" scheme="https://ooooooran.github.io/tags/ctf/"/>
+    
+    <category term="reverse" scheme="https://ooooooran.github.io/tags/reverse/"/>
+    
+    <category term="pwn" scheme="https://ooooooran.github.io/tags/pwn/"/>
+    
+    <category term="学习记录" scheme="https://ooooooran.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>acwing算法基础班学习</title>
+    <link href="https://ooooooran.github.io/post/a7b2b134.html"/>
+    <id>https://ooooooran.github.io/post/a7b2b134.html</id>
+    <published>2022-01-22T09:09:05.000Z</published>
+    <updated>2022-04-17T15:09:42.374Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;排序&quot;&gt;&lt;a href=&quot;#排序&quot; class=&quot;headerlink&quot; title=&quot;排序&quot;&gt;&lt;/a&gt;排序&lt;/h1&gt;&lt;h2 id=&quot;sort函数（sort和cmp配合使用）&quot;&gt;&lt;a href=&quot;#sort函数（sort和cmp配合使用）&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="计算机知识" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/"/>
+    
+    <category term="acwing" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/acwing/"/>
+    
+    <category term="算法学习" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/acwing/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="数据结构" scheme="https://ooooooran.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="acwing" scheme="https://ooooooran.github.io/tags/acwing/"/>
+    
+    <category term="算法学习" scheme="https://ooooooran.github.io/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>单链表的简单习题</title>
+    <link href="https://ooooooran.github.io/post/c7a1608d.html"/>
+    <id>https://ooooooran.github.io/post/c7a1608d.html</id>
+    <published>2022-01-20T06:58:17.000Z</published>
+    <updated>2022-04-08T03:14:28.618Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-合并两个链表&quot;&gt;&lt;a href=&quot;#1-合并两个链表&quot; class=&quot;headerlink&quot; title=&quot;1.合并两个链表&quot;&gt;&lt;/a&gt;1.合并两个链表&lt;/h1&gt;&lt;p&gt;将两个升序链表合并为一个新的 升序</summary>
+        
+      
+    
+    
+    
+    <category term="计算机知识" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/"/>
+    
+    <category term="数据结构" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="链表" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/"/>
+    
+    
+    <category term="数据结构" scheme="https://ooooooran.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="链表" scheme="https://ooooooran.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>链表的初步学习--单链表</title>
+    <link href="https://ooooooran.github.io/post/477f3555.html"/>
+    <id>https://ooooooran.github.io/post/477f3555.html</id>
+    <published>2022-01-06T08:03:35.000Z</published>
+    <updated>2022-04-08T03:14:41.562Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;链表的定义&quot;&gt;&lt;a href=&quot;#链表的定义&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="计算机知识" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/"/>
+    
+    <category term="数据结构" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="链表" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/"/>
+    
+    
+    <category term="数据结构" scheme="https://ooooooran.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="链表" scheme="https://ooooooran.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>typora实现自动图片上传</title>
+    <link href="https://ooooooran.github.io/post/70210745.html"/>
+    <id>https://ooooooran.github.io/post/70210745.html</id>
+    <published>2022-01-03T09:58:52.000Z</published>
+    <updated>2022-01-13T08:08:07.641Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;前几天上传文章到bbs,被本地图片搞到吐血了，所以学了下用插件直接将图片上传到github图床&lt;/p&gt;
+&lt;h1 id=&quot;所用工具&quot;&gt;&lt;a href=&quot;#所用工具&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="杂七杂八" scheme="https://ooooooran.github.io/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
+    
+    
+    <category term="小知识" scheme="https://ooooooran.github.io/tags/%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
+    
+    <category term="typora使用技巧" scheme="https://ooooooran.github.io/tags/typora%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
+  
+</feed>
