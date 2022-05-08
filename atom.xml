@@ -6,7 +6,7 @@
   <link href="https://ooooooran.github.io/atom.xml" rel="self"/>
   
   <link href="https://ooooooran.github.io/"/>
-  <updated>2022-04-27T14:14:46.092Z</updated>
+  <updated>2022-05-08T08:40:39.991Z</updated>
   <id>https://ooooooran.github.io/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>matlab学习</title>
+    <link href="https://ooooooran.github.io/post/f2eb1160.html"/>
+    <id>https://ooooooran.github.io/post/f2eb1160.html</id>
+    <published>2022-05-08T05:00:00.000Z</published>
+    <updated>2022-05-08T08:40:39.991Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;常用的matlab简单函数&quot;&gt;&lt;a href=&quot;#常用的matlab简单函数&quot; class=&quot;headerlink&quot; title=&quot;常用的matlab简单函数&quot;&gt;&lt;/a&gt;常用的matlab简单函数&lt;/h1&gt;&lt;figure class=&quot;highlight</summary>
+        
+      
+    
+    
+    
+    <category term="数学建模" scheme="https://ooooooran.github.io/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/"/>
+    
+    <category term="matlab" scheme="https://ooooooran.github.io/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/matlab/"/>
+    
+    
+    <category term="matlab" scheme="https://ooooooran.github.io/tags/matlab/"/>
+    
+    <category term="数学建模" scheme="https://ooooooran.github.io/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ctf做题记录update to 4.27</title>
     <link href="https://ooooooran.github.io/post/e7e133ec.html"/>
     <id>https://ooooooran.github.io/post/e7e133ec.html</id>
     <published>2022-04-27T14:13:47.000Z</published>
-    <updated>2022-04-27T14:14:46.092Z</updated>
+    <updated>2022-04-30T08:07:34.193Z</updated>
     
     
       
@@ -44,35 +73,6 @@
     <category term="reverse" scheme="https://ooooooran.github.io/tags/reverse/"/>
     
     <category term="学习记录" scheme="https://ooooooran.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>matlab学习</title>
-    <link href="https://ooooooran.github.io/post/f2eb1160.html"/>
-    <id>https://ooooooran.github.io/post/f2eb1160.html</id>
-    <published>2022-04-26T12:35:59.000Z</published>
-    <updated>2022-04-26T12:46:13.309Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;常用的matlab简单函数&quot;&gt;&lt;a href=&quot;#常用的matlab简单函数&quot; class=&quot;headerlink&quot; title=&quot;常用的matlab简单函数&quot;&gt;&lt;/a&gt;常用的matlab简单函数&lt;/h1&gt;&lt;figure class=&quot;highlight</summary>
-        
-      
-    
-    
-    
-    <category term="数学建模" scheme="https://ooooooran.github.io/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/"/>
-    
-    <category term="matlab" scheme="https://ooooooran.github.io/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/matlab/"/>
-    
-    
-    <category term="matlab" scheme="https://ooooooran.github.io/tags/matlab/"/>
-    
-    <category term="数学建模" scheme="https://ooooooran.github.io/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/"/>
     
   </entry>
   
@@ -159,9 +159,9 @@
     <category term="misc" scheme="https://ooooooran.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/misc/"/>
     
     
-    <category term="gaps安装" scheme="https://ooooooran.github.io/tags/gaps%E5%AE%89%E8%A3%85/"/>
-    
     <category term="ctf" scheme="https://ooooooran.github.io/tags/ctf/"/>
+    
+    <category term="gaps安装" scheme="https://ooooooran.github.io/tags/gaps%E5%AE%89%E8%A3%85/"/>
     
     <category term="misc" scheme="https://ooooooran.github.io/tags/misc/"/>
     
