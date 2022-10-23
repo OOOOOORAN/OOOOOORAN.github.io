@@ -15,7 +15,7 @@
           
           <category> 计算机知识 </category>
           
-          <category> 算法学习 </category>
+          <category> 数据结构 </category>
           
           <category> 二叉树 </category>
           
@@ -148,9 +148,9 @@
       
         <tags>
             
-            <tag> gaps安装 </tag>
-            
             <tag> ctf </tag>
+            
+            <tag> gaps安装 </tag>
             
             <tag> misc </tag>
             

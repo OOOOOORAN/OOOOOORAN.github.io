@@ -6,7 +6,7 @@
   <link href="https://ooooooran.github.io/atom.xml" rel="self"/>
   
   <link href="https://ooooooran.github.io/"/>
-  <updated>2022-10-23T06:08:49.285Z</updated>
+  <updated>2022-10-23T06:18:31.583Z</updated>
   <id>https://ooooooran.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://ooooooran.github.io/post/feb19258.html"/>
     <id>https://ooooooran.github.io/post/feb19258.html</id>
     <published>2022-10-23T05:44:08.000Z</published>
-    <updated>2022-10-23T06:08:49.285Z</updated>
+    <updated>2022-10-23T06:18:31.583Z</updated>
     
     
       
@@ -36,9 +36,9 @@
     
     <category term="计算机知识" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/"/>
     
-    <category term="算法学习" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/"/>
+    <category term="数据结构" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-    <category term="二叉树" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    <category term="二叉树" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
     
     <category term="数据结构" scheme="https://ooooooran.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
@@ -161,9 +161,9 @@
     <category term="misc" scheme="https://ooooooran.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/misc/"/>
     
     
-    <category term="gaps安装" scheme="https://ooooooran.github.io/tags/gaps%E5%AE%89%E8%A3%85/"/>
-    
     <category term="ctf" scheme="https://ooooooran.github.io/tags/ctf/"/>
+    
+    <category term="gaps安装" scheme="https://ooooooran.github.io/tags/gaps%E5%AE%89%E8%A3%85/"/>
     
     <category term="misc" scheme="https://ooooooran.github.io/tags/misc/"/>
     
