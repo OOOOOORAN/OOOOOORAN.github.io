@@ -6,7 +6,7 @@
   <link href="https://ooooooran.github.io/atom.xml" rel="self"/>
   
   <link href="https://ooooooran.github.io/"/>
-  <updated>2022-10-23T06:18:31.583Z</updated>
+  <updated>2022-11-05T06:42:18.980Z</updated>
   <id>https://ooooooran.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>neural network</title>
+    <link href="https://ooooooran.github.io/post/1f6af09f.html"/>
+    <id>https://ooooooran.github.io/post/1f6af09f.html</id>
+    <published>2022-11-05T05:56:02.000Z</published>
+    <updated>2022-11-05T06:42:18.980Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-代价函数&quot;&gt;&lt;a href=&quot;#1-代价函数&quot; class=&quot;headerlink&quot; title=&quot;1. 代价函数&quot;&gt;&lt;/a&gt;1. 代价函数&lt;/h1&gt;&lt;p&gt;  神经网络在分类问题中的应用:&lt;br&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="ML" scheme="https://ooooooran.github.io/categories/ML/"/>
+    
+    <category term="Neural Network" scheme="https://ooooooran.github.io/categories/ML/Neural-Network/"/>
+    
+    
+    <category term="ML" scheme="https://ooooooran.github.io/tags/ML/"/>
+    
+    <category term="Neural Network" scheme="https://ooooooran.github.io/tags/Neural-Network/"/>
+    
+  </entry>
   
   <entry>
     <title>二叉树学习</title>
@@ -40,6 +69,39 @@
     
     <category term="二叉树" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
+    
+    <category term="数据结构" scheme="https://ooooooran.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="算法学习" scheme="https://ooooooran.github.io/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法学习</title>
+    <link href="https://ooooooran.github.io/post/a7b2b134.html"/>
+    <id>https://ooooooran.github.io/post/a7b2b134.html</id>
+    <published>2022-10-22T09:09:05.000Z</published>
+    <updated>2022-10-23T15:14:24.331Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;排序&quot;&gt;&lt;a href=&quot;#排序&quot; class=&quot;headerlink&quot; title=&quot;排序&quot;&gt;&lt;/a&gt;排序&lt;/h1&gt;&lt;h2 id=&quot;sort函数（sort和cmp配合使用）&quot;&gt;&lt;a href=&quot;#sort函数（sort和cmp配合使用）&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="计算机知识" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/"/>
+    
+    <category term="acwing" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/acwing/"/>
+    
+    <category term="算法学习" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/acwing/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="acwing" scheme="https://ooooooran.github.io/tags/acwing/"/>
     
     <category term="数据结构" scheme="https://ooooooran.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
@@ -199,39 +261,6 @@
     <category term="学习记录" scheme="https://ooooooran.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
     <category term="pwn" scheme="https://ooooooran.github.io/tags/pwn/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>算法学习</title>
-    <link href="https://ooooooran.github.io/post/a7b2b134.html"/>
-    <id>https://ooooooran.github.io/post/a7b2b134.html</id>
-    <published>2022-01-22T09:09:05.000Z</published>
-    <updated>2022-10-23T14:48:38.975Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;排序&quot;&gt;&lt;a href=&quot;#排序&quot; class=&quot;headerlink&quot; title=&quot;排序&quot;&gt;&lt;/a&gt;排序&lt;/h1&gt;&lt;h2 id=&quot;sort函数（sort和cmp配合使用）&quot;&gt;&lt;a href=&quot;#sort函数（sort和cmp配合使用）&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="计算机知识" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/"/>
-    
-    <category term="acwing" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/acwing/"/>
-    
-    <category term="算法学习" scheme="https://ooooooran.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/acwing/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="acwing" scheme="https://ooooooran.github.io/tags/acwing/"/>
-    
-    <category term="数据结构" scheme="https://ooooooran.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    <category term="算法学习" scheme="https://ooooooran.github.io/tags/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
