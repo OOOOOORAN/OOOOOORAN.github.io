@@ -1,0 +1,792 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="HXDCHLl">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="特殊的base64这道题故名思意 ，肯定是base64改变字母表，顺便复习下之前写过的脚本 首先打开ida先找改变后的字母表，找到后再找到密文就可以得到flag了。  re4-unvm-me为什么开始做攻防世界的题了，因为buu后面的题有亿点点难。这道题时py反编译，用在线网站python反编译 - 在线工具 (tool.lu)可以快速得到源码 12345678910111213141516171">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逆向做题记录">
+<meta property="og:url" content="http://8.130.133.226/2022/01/24/%E9%80%86%E5%90%91%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="Xinjie Lin&#39;s Blog">
+<meta property="og:description" content="特殊的base64这道题故名思意 ，肯定是base64改变字母表，顺便复习下之前写过的脚本 首先打开ida先找改变后的字母表，找到后再找到密文就可以得到flag了。  re4-unvm-me为什么开始做攻防世界的题了，因为buu后面的题有亿点点难。这道题时py反编译，用在线网站python反编译 - 在线工具 (tool.lu)可以快速得到源码 12345678910111213141516171">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/GTwqYPMSnQc4gvp.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/J9GokZfdKySlB4b.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/Tpo4tU8BXnqSlrx.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/yWDAzLBiJu1nSkN.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/be1hB82MXUWRIJL.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/HRDikdZKmMbJlhj.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/iWRNIGDpUMyJ1La.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/VyuTmkqInojKC7B.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/S1pJ7ByM4qiANec.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/GrjdxTSAtQHiWmY.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/hmUTsNQ4bVOxBLE.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/xQZJlPzakIDAyLO.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/r7lXPvSLxIGuFBN.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/6tVNaeXmZA1R7Fv.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/yLONPEca5tU4BhZ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/g9UroXl5PDdvRFw.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/eOdtAF7XUlYJomL.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/glzxpuGfbeIKPnZ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/4f6sLKrIpQZNedB.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/LERdtTm2ABzIlP5.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/siUNQ1bmMeEVRr2.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/134v5pJlgBWCkiw.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/EqZoXHWplwLSd6Q.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/24/ZubzFDVhTyqBck5.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/12krvMD7SpbAKEm.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/gd4V5e6DUMf9a7s.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/nPQ5dLbgZU9yXmA.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/D5TXUHAFtYiLE3S.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/CK1QB9LPd4oJjMN.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/zWkb73oe9Jtdapx.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/L3l2eT58sbNMAyd.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/Gxjb3mAaQi9vTZ4.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/fRhoqI7iyT3pPum.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/7DPbYnIXF3zq4N8.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/hlFsgCfJOPNzrHV.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/ZElOLsWneyQi5NV.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/wxWLcH1fiG7ETr8.png">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/ICg3ByZi7LeOfmk.png">
+<meta property="article:published_time" content="2022-01-23T17:55:13.000Z">
+<meta property="article:modified_time" content="2024-03-31T05:04:38.667Z">
+<meta property="article:author" content="HXDCHLl">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="reverse">
+<meta property="article:tag" content="pwn">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2022/01/24/GTwqYPMSnQc4gvp.png">
+  
+  
+  
+  <title>逆向做题记录 - Xinjie Lin&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"8.130.133.226","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Xinjie Lin&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="逆向做题记录"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-01-24 01:55" pubdate>
+          2022年1月24日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          全文共有1.5k字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          预计阅读时间为13分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">逆向做题记录</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="特殊的base64"><a href="#特殊的base64" class="headerlink" title="特殊的base64"></a>特殊的base64</h1><p>这道题故名思意 ，肯定是base64改变字母表，顺便复习下之前写过的脚本</p>
+<p>首先打开ida先找改变后的字母表，找到后再找到密文就可以得到flag了。</p>
+<p><img src="https://s2.loli.net/2022/01/24/GTwqYPMSnQc4gvp.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-21 151916"><br><img src="https://s2.loli.net/2022/01/24/J9GokZfdKySlB4b.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-21 151830"></p>
+<h1 id="re4-unvm-me"><a href="#re4-unvm-me" class="headerlink" title="re4-unvm-me"></a>re4-unvm-me</h1><p>为什么开始做攻防世界的题了，因为buu后面的题有亿点点难。这道题时py反编译，用在线网站<a target="_blank" rel="noopener" href="https://tool.lu/pyc/">python反编译 - 在线工具 (tool.lu)</a>可以快速得到源码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python</span><br><span class="hljs-comment"># visit http://tool.lu/pyc/ for more information</span><br><span class="hljs-keyword">import</span> md5<br>md5s = [<br>    <span class="hljs-number">0x831DAA3C843BA8B087C895F0ED305CE7L</span>,<br>    <span class="hljs-number">0x6722F7A07246C6AF20662B855846C2C8L</span>,<br>    <span class="hljs-number">0x5F04850FEC81A27AB5FC98BEFA4EB40CL</span>,<br>    <span class="hljs-number">0xECF8DCAC7503E63A6A3667C5FB94F610L</span>,<br>    <span class="hljs-number">0xC0FD15AE2C3931BC1E140523AE934722L</span>,<br>    <span class="hljs-number">0x569F606FD6DA5D612F10CFB95C0BDE6DL</span>,<br>    <span class="hljs-number">0x68CB5A1CF54C078BF0E7E89584C1A4EL</span>,<br>    <span class="hljs-number">0xC11E2CD82D1F9FBD7E4D6EE9581FF3BDL</span>,<br>    <span class="hljs-number">0x1DF4C637D625313720F45706A48FF20FL</span>,<br>    <span class="hljs-number">0x3122EF3A001AAECDB8DD9D843C029E06L</span>,<br>    <span class="hljs-number">0xADB778A0F729293E7E0B19B96A4C5A61L</span>,<br>    <span class="hljs-number">0x938C747C6A051B3E163EB802A325148EL</span>,<br>    <span class="hljs-number">0x38543C5E820DD9403B57BEFF6020596DL</span>]<br><span class="hljs-built_in">print</span> <span class="hljs-string">&#x27;Can you turn me back to python ? ...&#x27;</span><br>flag = raw_input(<span class="hljs-string">&#x27;well as you wish.. what is the flag: &#x27;</span>)<br><span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(flag) &gt; <span class="hljs-number">69</span>:<br>    <span class="hljs-built_in">print</span> <span class="hljs-string">&#x27;nice try&#x27;</span><br>    exit()<br><span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(flag) % <span class="hljs-number">5</span> != <span class="hljs-number">0</span>:<br>    <span class="hljs-built_in">print</span> <span class="hljs-string">&#x27;nice try&#x27;</span><br>    exit()<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(flag), <span class="hljs-number">5</span>):<br>    s = flag[i:i + <span class="hljs-number">5</span>]<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">int</span>(<span class="hljs-string">&#x27;0x&#x27;</span> + md5.new(s).hexdigest(), <span class="hljs-number">16</span>) != md5s[i / <span class="hljs-number">5</span>]:<br>        <span class="hljs-built_in">print</span> <span class="hljs-string">&#x27;nice try&#x27;</span><br>        exit()<br>        <span class="hljs-keyword">continue</span><br><span class="hljs-built_in">print</span> <span class="hljs-string">&#x27;Congratz now you have the flag&#x27;</span><br><br></code></pre></td></tr></table></figure>
+
+<p>flag的长度小于69且是五的倍数，然后flag每五个一组和上面给的MD5进行对比，所以只要把上面的MD5全部拼在一起就可以得到flag</p>
+<p>flag：ALEXCTF{dv5d4s2vj8nk43s8d8l6m1n5l67ds9v41n52nv37j481h3d28n4b6v3k}</p>
+<h1 id="流浪者"><a href="#流浪者" class="headerlink" title="流浪者"></a>流浪者</h1><p><img src="https://s2.loli.net/2022/01/24/Tpo4tU8BXnqSlrx.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-23 142623"></p>
+<p><img src="https://s2.loli.net/2022/01/24/yWDAzLBiJu1nSkN.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-23 142614"></p>
+<p>题目先给出了str1，然后让str1的每个元素和字母表进行对比，反着来可以得到a1(v5),v5(在原函数中也是进行了变化，因此可以将v5逆回去得到flag</p>
+<p><img src="https://s2.loli.net/2022/01/24/be1hB82MXUWRIJL.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-23 142523"></p>
+<p>flag:flag{j0rXI4bTeustBiIGHeCF70DDM}</p>
+<h1 id="actf-universe-final-ans"><a href="#actf-universe-final-ans" class="headerlink" title="actf universe_final_ans"></a>actf universe_final_ans</h1><p>打开ida发现有一个条件函数和一个比较函数，说明程序关键在这两个函数</p>
+<p><img src="https://s2.loli.net/2022/01/24/HRDikdZKmMbJlhj.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-13 165706"></p>
+<p>打开第一个函数发现是方程组，用这库写完后得到前一半flag</p>
+<p><img src="https://s2.loli.net/2022/01/24/iWRNIGDpUMyJ1La.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-13 165807"></p>
+<p><img src="https://s2.loli.net/2022/01/24/VyuTmkqInojKC7B.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-13 165432"></p>
+<p><img src="https://s2.loli.net/2022/01/24/S1pJ7ByM4qiANec.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-13 165442"></p>
+<p>第二个函数我死活分析不出来，卡住了。后来实在没办法就去参考了下题解，发现大家都没分析出来第二个函数，都是采用运行elf文件得到第二个部分。给了我启示，不要死磕在解出函数，如果程序有两个函数，可以尝试下将第一个部分的flag带入，说不定就能得到第二部分flag</p>
+<h1 id="buuctf-刮开有奖"><a href="#buuctf-刮开有奖" class="headerlink" title="buuctf 刮开有奖"></a>buuctf 刮开有奖</h1><p>用ida打开后发现是windows程序，同时看了下字符串，出现了ABCD…..789这类字符串，怀疑有base64加密，只调用了DialogBoxParamA这个api，打开dialogfunc函数后发现了主程序</p>
+<p><img src="https://s2.loli.net/2022/01/24/GrjdxTSAtQHiWmY.png" srcset="/img/loading.gif" lazyload></p>
+<p>对4010F0函数进行封装后的得到v7变化后的值</p>
+<p><img src="https://s2.loli.net/2022/01/24/hmUTsNQ4bVOxBLE.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-15 151601"></p>
+<p>点开v4v5调用的sub_401000发现调用了BCD….789这个字符串，肯定了用base64加密，base64解密后，将每个字符串对应string下标后得到flag： flag{UJWP1jMp}</p>
+<h1 id="wusctf2020-level1"><a href="#wusctf2020-level1" class="headerlink" title="wusctf2020 level1"></a>wusctf2020 level1</h1><p>用ida打开程序后发现主函数特别简单就是进行了移位和相乘，并且用fclose fopen fprintf将得到的数据存入了flag.txt文件中，只要将flag.txt文件中的数据提取出来，并且进行反移位后就可以得到flag</p>
+<p><img src="https://s2.loli.net/2022/01/24/xQZJlPzakIDAyLO.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-15 154722.png"></p>
+<p><img src="https://s2.loli.net/2022/01/24/r7lXPvSLxIGuFBN.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-15 154732.png"></p>
+<p>flag为flag{d9-dE6-20c}</p>
+<h1 id="MRCTF2020-Transform"><a href="#MRCTF2020-Transform" class="headerlink" title="[MRCTF2020]Transform"></a>[MRCTF2020]Transform</h1><p>首先用ida打开找到主函数后跟进分析</p>
+<p><img src="https://s2.loli.net/2022/01/24/6tVNaeXmZA1R7Fv.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-15 162805"></p>
+<p><strong>这里要注意一点：存储flag的str字符串在进行异或时是str[dword_40f040]所以会先把str打乱</strong></p>
+<p>发现主函数进行了异或操作，于是找到数据</p>
+<p><img src="https://s2.loli.net/2022/01/24/yLONPEca5tU4BhZ.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-15 162818"></p>
+<p>用shift+e提出数据后写脚本得到答案即可</p>
+<p><img src="https://s2.loli.net/2022/01/24/g9UroXl5PDdvRFw.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-15 163413"></p>
+<p>flag为flag{Tr4nsp0sltiON_Clph3r_1s_3z}</p>
+<h1 id="FlareOn4-login"><a href="#FlareOn4-login" class="headerlink" title="FlareOn4 login"></a>FlareOn4 login</h1><p>第一次做java类的题目，挺简单的但还是记录一下，用vscode打开html文件后得到</p>
+<p><img src="https://s2.loli.net/2022/01/24/eOdtAF7XUlYJomL.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-15 163809"></p>
+<p>可知用了rot13加密，解密后就可以得到flag：flag{<a href="mailto:&#x43;&#x6c;&#105;&#x65;&#x6e;&#x74;&#x53;&#105;&#100;&#x65;&#x4c;&#x6f;&#x67;&#105;&#x6e;&#115;&#65;&#x72;&#101;&#x45;&#x61;&#x73;&#121;&#64;&#x66;&#108;&#97;&#x72;&#x65;&#x2d;&#111;&#x6e;&#x2e;&#99;&#111;&#109;">&#x43;&#x6c;&#105;&#x65;&#x6e;&#x74;&#x53;&#105;&#100;&#x65;&#x4c;&#x6f;&#x67;&#105;&#x6e;&#115;&#65;&#x72;&#101;&#x45;&#x61;&#x73;&#121;&#64;&#x66;&#108;&#97;&#x72;&#x65;&#x2d;&#111;&#x6e;&#x2e;&#99;&#111;&#109;</a>}</p>
+<h1 id="FlareOn6-OverLong"><a href="#FlareOn6-OverLong" class="headerlink" title="FlareOn6 OverLong"></a>FlareOn6 OverLong</h1><p>首先看了下题目名字overlong和hint:</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">The secret <span class="hljs-keyword">of</span> this next challenge is cleverly hidden. However, <span class="hljs-keyword">with</span> <span class="hljs-keyword">the</span> <span class="hljs-literal">right</span> approach, finding <span class="hljs-keyword">the</span> solution will <span class="hljs-keyword">not</span> take <span class="hljs-keyword">an</span> &lt;b&gt;overlong&lt;/b&gt; amount <span class="hljs-keyword">of</span> <span class="hljs-built_in">time</span>.<br></code></pre></td></tr></table></figure>
+
+<p>我猜测真正的数据应该是被隐藏了。</p>
+<p>先用IDA打开程序，发现程序除了一个MessageBox api什么都没有</p>
+<p><img src="https://s2.loli.net/2022/01/24/glzxpuGfbeIKPnZ.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-16 100728"></p>
+<p>于是逐个分析函数</p>
+<p><img src="https://s2.loli.net/2022/01/24/4f6sLKrIpQZNedB.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-16 101626"><br><img src="https://s2.loli.net/2022/01/24/LERdtTm2ABzIlP5.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-16 101638"></p>
+<p>发程序在401160函数执行了28次，同时402008处的数据给出了，但特别多超过了28个</p>
+<p><img src="https://s2.loli.net/2022/01/24/siUNQ1bmMeEVRr2.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-16 101717"></p>
+<p>于是我开始分析，但没分析出来QAQ，看了题解后得知要使用动态调试。于是又开始跟着题解用OD开始解题，</p>
+<p>先是F9运行了下程序，发现窗口出现的英文字母的总和正好是0x1c，于是开始寻找含有0x1c的指令，并将其数值改大，就可以出现flag:flag{<a href="mailto:&#x49;&#x5f;&#x61;&#x5f;&#x4d;&#x5f;&#116;&#95;&#104;&#95;&#101;&#95;&#x65;&#95;&#110;&#x5f;&#67;&#95;&#x6f;&#95;&#x44;&#95;&#105;&#95;&#110;&#95;&#x67;&#64;&#102;&#x6c;&#x61;&#x72;&#101;&#x5f;&#111;&#x6e;&#x2e;&#99;&#x6f;&#x6d;">&#x49;&#x5f;&#x61;&#x5f;&#x4d;&#x5f;&#116;&#95;&#104;&#95;&#101;&#95;&#x65;&#95;&#110;&#x5f;&#67;&#95;&#x6f;&#95;&#x44;&#95;&#105;&#95;&#110;&#95;&#x67;&#64;&#102;&#x6c;&#x61;&#x72;&#101;&#x5f;&#111;&#x6e;&#x2e;&#99;&#x6f;&#x6d;</a>}</p>
+<p>动态调试我刚刚接触，做的比较少，我对于使用题目要使用动态调试的情况的理解：第一个就是程序基本没有字符串或者没有给出明显的提示；二是程序本身比较复杂或者给出的数值很大很多，需要一个一个的动态给出。</p>
+<p>这是我目前的理解，以后可能做多了会有更多的理解。</p>
+<h1 id="MRCTF2020-hello-world-go"><a href="#MRCTF2020-hello-world-go" class="headerlink" title="[MRCTF2020]hello_world_go"></a>[MRCTF2020]hello_world_go</h1><p><img src="https://s2.loli.net/2022/01/24/134v5pJlgBWCkiw.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 114941"></p>
+<p>观看反编译找到关键函数cmpstring，得知flag肯定和这个比较函数有关，跟进后就发现了flag:flag{hello_world_gogogo};</p>
+<h1 id="WUSTCTF2020-level3"><a href="#WUSTCTF2020-level3" class="headerlink" title="[WUSTCTF2020]level3"></a>[WUSTCTF2020]level3</h1><p><img src="https://s2.loli.net/2022/01/16/EqZoXHWplwLSd6Q.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 130825"></p>
+<p>看题目给出的提示发现这道题要用到base64加密，但又和普通的base64加密有所不同。于是继续查找函数。</p>
+<p>找到这个可疑的函数，后发现了base64字母表的变换规律：</p>
+<p><img src="https://s2.loli.net/2022/01/24/ZubzFDVhTyqBck5.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 130833"></p>
+<p><img src="https://s2.loli.net/2022/01/16/12krvMD7SpbAKEm.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 115825"></p>
+<p>但是因为不会写变异后的base64解密脚本，于是查看了题解，按着题解的脚本写了一遍后得到了flag：</p>
+<p><img src="https://s2.loli.net/2022/01/16/gd4V5e6DUMf9a7s.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 115900"></p>
+<p>flag{Base64_is_the_start_of_reverse}</p>
+<h1 id="WUSTCTF2020-Cr0ssfun"><a href="#WUSTCTF2020-Cr0ssfun" class="headerlink" title="[WUSTCTF2020]Cr0ssfun"></a>[WUSTCTF2020]Cr0ssfun</h1><p>这题比较常规，反编译后发现了主函数中的关键函数check()，点进去后发现他给出了a1数组的每个下标的字母，将每个字母提取出来后，输出就可以得到flag:</p>
+<p><img src="https://s2.loli.net/2022/01/16/nPQ5dLbgZU9yXmA.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 130041"></p>
+<p><img src="https://s2.loli.net/2022/01/16/D5TXUHAFtYiLE3S.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 130050"></p>
+<p><img src="https://s2.loli.net/2022/01/16/CK1QB9LPd4oJjMN.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 130059"></p>
+<p><img src="https://s2.loli.net/2022/01/16/zWkb73oe9Jtdapx.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 130106"></p>
+<p><img src="https://s2.loli.net/2022/01/16/L3l2eT58sbNMAyd.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 130113"></p>
+<p>![屏幕截图 2022-01-09 130027](C:\Users\HXDCHLL\Pictures\屏幕截图 2022-01-09 130027.png)</p>
+<p>得到flag:  wctf2020{cpp@nd_r3verse_@re_fu}<br>修改为 flag{cpp@nd_r3verse_@re_fu} </p>
+<h1 id="FlareOn3-Challenge1"><a href="#FlareOn3-Challenge1" class="headerlink" title="[FlareOn3]Challenge1"></a>[FlareOn3]Challenge1</h1><p><img src="https://s2.loli.net/2022/01/16/Gxjb3mAaQi9vTZ4.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 131624"></p>
+<p><img src="https://s2.loli.net/2022/01/16/fRhoqI7iyT3pPum.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 131700"></p>
+<p><img src="https://s2.loli.net/2022/01/16/7DPbYnIXF3zq4N8.png" srcset="/img/loading.gif" lazyload alt="20210203123555487"></p>
+<p><img src="https://s2.loli.net/2022/01/16/hlFsgCfJOPNzrHV.png" srcset="/img/loading.gif" lazyload alt="20210203123510173"></p>
+<p>我一个一个改str1后再base64得到了flag</p>
+<p> flag{<a href="mailto:&#115;&#x68;&#x30;&#x30;&#x74;&#x69;&#110;&#x67;&#95;&#x70;&#104;&#105;&#x73;&#x68;&#x5f;&#x69;&#x6e;&#x5f;&#97;&#x5f;&#98;&#x61;&#x72;&#x72;&#x65;&#108;&#64;&#102;&#108;&#x61;&#x72;&#x65;&#45;&#111;&#x6e;&#46;&#x63;&#x6f;&#109;">&#115;&#x68;&#x30;&#x30;&#x74;&#x69;&#110;&#x67;&#95;&#x70;&#104;&#105;&#x73;&#x68;&#x5f;&#x69;&#x6e;&#x5f;&#97;&#x5f;&#98;&#x61;&#x72;&#x72;&#x65;&#108;&#64;&#102;&#108;&#x61;&#x72;&#x65;&#45;&#111;&#x6e;&#46;&#x63;&#x6f;&#109;</a>}</p>
+<p>后来看了题解按着题解的步骤，抄了下代码：</p>
+<h1 id="ACTF新生赛2020-Oruga"><a href="#ACTF新生赛2020-Oruga" class="headerlink" title="[ACTF新生赛2020]Oruga"></a>[ACTF新生赛2020]Oruga</h1><p>首先找关键函数，发现是迷宫题：</p>
+<p><img src="https://s2.loli.net/2022/01/16/ZElOLsWneyQi5NV.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 133709"></p>
+<p>于是开始找迷宫，发现以下汇编语言，找到迷宫：</p>
+<p><img src="https://s2.loli.net/2022/01/16/wxWLcH1fiG7ETr8.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 133724"></p>
+<p>输出迷宫：</p>
+<p><img src="https://s2.loli.net/2022/01/16/ICg3ByZi7LeOfmk.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 134115"></p>
+<p>手打得到flag:flag{MEWEMEWJMEWJM}</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/ctf/" class="print-no-link">#ctf</a>
+      
+        <a href="/tags/reverse/" class="print-no-link">#reverse</a>
+      
+        <a href="/tags/pwn/" class="print-no-link">#pwn</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>逆向做题记录</div>
+      <div>http://8.130.133.226/2022/01/24/逆向做题记录/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>HXDCHLl</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年1月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/01/26/linux%E4%B8%8B%E7%9A%84gaps%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/" title="linux下的gaps安装和使用">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">linux下的gaps安装和使用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/20/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E7%AE%80%E5%8D%95%E4%B9%A0%E9%A2%98/" title="单链表的简单习题">
+                        <span class="hidden-mobile">单链表的简单习题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'OOOOOORAN/OOOOOORAN.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
