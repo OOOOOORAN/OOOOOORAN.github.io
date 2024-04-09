@@ -23,13 +23,15 @@
 <meta property="og:site_name" content="Xinjie Lin&#39;s Blog">
 <meta property="og:description" content="洛谷P2285 –[HNOI2004] 打鼹鼠题目描述鼹鼠是一种很喜欢挖洞的动物，但每过一定的时间，它还是喜欢把头探出到地面上来透透气的。根据这个特点阿牛编写了一个打鼹鼠的游戏：在一个 $n \times n$ 的网格中，在某些时刻鼹鼠会在某一个网格探出头来透透气。你可以控制一个机器人来打鼹鼠，如果 $i$ 时刻鼹鼠在某个网格中出现，而机器人也处于同一网格的话，那么这个鼹鼠就会被机器人打死。而机器">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.leetcode-cn.com/1598145577-ziwCvD-1.png">
 <meta property="article:published_time" content="2024-04-02T12:09:31.981Z">
-<meta property="article:modified_time" content="2024-04-02T13:05:02.210Z">
+<meta property="article:modified_time" content="2024-04-09T13:09:12.412Z">
 <meta property="article:author" content="HXDCHLl">
+<meta property="article:tag" content="算法">
 <meta property="article:tag" content="保研">
 <meta property="article:tag" content="机试">
-<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic.leetcode-cn.com/1598145577-ziwCvD-1.png">
   
   
   
@@ -223,7 +225,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          全文共有858字
+          全文共有2.1k字
         
       </span>
     
@@ -235,7 +237,7 @@
         
         
           <!-- compatible with older versions-->
-          预计阅读时间为8分钟
+          预计阅读时间为18分钟
         
       </span>
     
@@ -289,6 +291,48 @@
 <p>因为输入数据每个时间点是递增的，那么我们就可以转变思路，用动态规划的思想来分析${t}_i$在时刻以$({x}_i,{y}_i)$为结束的击打序列中，最多击打数是多少。同时机器人移动只能在四方向移动，那么我们可以认为只要第$i$个鼹鼠与前$i-1$个鼹鼠之间的曼哈顿距离小于相距时间的话就可以依次打到，这样就可以构建状态转移方程<br>$$<br>dp[i] &#x3D; \begin{cases}max(dp[i],dp[j]+1) &amp; \ abs({x_i} - {y_i}) + abs({y}_i-{y}_j)\leqslant abs({t}_i-{t}_j) \ 1&amp; \ abs({x_i} - {y_i}) + abs({y}_i-{y}_j)\gt abs({t}_i-{t}_j)\end{cases}<br>$$</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cmath&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e4</span>+<span class="hljs-number">10</span>;<br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span>&#123;<br>    <span class="hljs-type">int</span> t,x,y;<br>&#125;Node;<br><span class="hljs-type">int</span> dp[N];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">int</span> n,m;<br>    cin&gt;&gt;n&gt;&gt;m;<br>    Node node[N]; <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i&lt;m;i++) cin&gt;&gt;node[i].t&gt;&gt;node[i].x&gt;&gt;node[i].y;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i&lt;m;i++)&#123;<br>        dp[i] = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;j &lt; i ;j++)&#123;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">abs</span>(node[i].x - node[j].x) + <span class="hljs-built_in">abs</span>(node[i].y - node[j].y) &lt;= <span class="hljs-built_in">abs</span>(node[i].t - node[j].t))<br>                dp[i] = <span class="hljs-built_in">max</span>(dp[i],dp[j] + <span class="hljs-number">1</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i&lt;m;i++) res = <span class="hljs-built_in">max</span>(res,dp[i]);<br>    cout&lt;&lt;res&lt;&lt;endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; <br>&#125;<br></code></pre></td></tr></table></figure>
 
+<h1 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h1><h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><p>单调栈实际上就是栈，只是利用了一些巧妙的逻辑，使得每次新元素入栈后，栈内的元素都保持有序（单调递增或单调递减）。</p>
+<p>单调栈用途不太广泛，只处理一种典型的问题，叫做 Next Greater Element。</p>
+<h2 id="单调栈类型模板-下一个更大元素"><a href="#单调栈类型模板-下一个更大元素" class="headerlink" title="单调栈类型模板(下一个更大元素)"></a>单调栈类型模板(下一个更大元素)</h2><p>首先，讲解 Next Greater Number 的原始问题：给你一个数组，返回一个等长的数组，对应索引存储着下一个更大元素，如果没有更大的元素，就存 -1。不好用语言解释清楚，直接上一个例子：</p>
+<p>给你一个数组 [2,1,2,4,3]，你返回数组 [4,2,4,-1,-1]。</p>
+<p>解释：第一个 2 后面比 2 大的数是 4; 1 后面比 1 大的数是 2；第二个 2 后面比 2 大的数是 4; 4 后面没有比 4 大的数，填 -1；3 后面没有比 3 大的数，填 -1。</p>
+<p>这道题的暴力解法很好想到，就是对每个元素后面都进行扫描，找到第一个更大的元素就行了。但是暴力解法的时间复杂度是 O(n^2)。</p>
+<p>这个问题可以这样抽象思考：把数组的元素想象成并列站立的人，元素大小想象成人的身高。这些人面对你站成一列，如何求元素「2」的 Next Greater Number 呢？很简单，如果能够看到元素「2」，那么他后面可见的第一个人就是「2」的 Next Greater Number，因为比「2」小的元素身高不够，都被「2」挡住了，第一个露出来的就是答案。</p>
+<p><img src="https://pic.leetcode-cn.com/1598145577-ziwCvD-1.png" srcset="/img/loading.gif" lazyload alt="演示图片"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stack&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span>+<span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> num[N],ans[N];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i&lt;n;i++) cin&gt;&gt;num[i];<br>    stack&lt;<span class="hljs-type">int</span>&gt; st;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = n - <span class="hljs-number">1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<br>        <span class="hljs-keyword">while</span>(st.<span class="hljs-built_in">size</span>() &amp;&amp; st.<span class="hljs-built_in">top</span>() &lt;= num[i])&#123;<br>            st.<span class="hljs-built_in">pop</span>();<br>        &#125;<br>        ans[i] = st.<span class="hljs-built_in">size</span>()?st.<span class="hljs-built_in">top</span>():<span class="hljs-number">-1</span>;<br>        st.<span class="hljs-built_in">push</span>(num[i]);<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i&lt;n;i++) cout&lt;&lt;ans[i]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="动态规划子问题-—–-分苹果"><a href="#动态规划子问题-—–-分苹果" class="headerlink" title="动态规划子问题 —– 分苹果"></a>动态规划子问题 —– 分苹果</h1><h2 id="样例题目"><a href="#样例题目" class="headerlink" title="样例题目"></a>样例题目</h2><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs excel">把M个弹珠放到<span class="hljs-built_in">N</span>个盘子里面（我们允许有的盘子为空），你能求出有多少种分法吗？（请注意，例如有三个盘子，我们将<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>和<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>，视为同一种分法）<br><br>输入格式<span class="hljs-symbol">:</span><br>输入包含多组测试样例。每组输入的第一行是一个整数<span class="hljs-built_in">t</span>。 接下来<span class="hljs-built_in">t</span>行，每行输入两个整数M和<span class="hljs-built_in">N</span>，代表有M个弹珠和<span class="hljs-built_in">N</span>个盘子。（<span class="hljs-number">0</span>=&lt;M&lt;=<span class="hljs-number">20</span>; <span class="hljs-number">0</span>&lt;<span class="hljs-built_in">N</span>&lt;=<span class="hljs-number">20</span>）<br><br>输出格式<span class="hljs-symbol">:</span><br>对于每对输入的M和<span class="hljs-built_in">N</span>，输出有多少种方法。<br><br>输入样例<span class="hljs-symbol">:</span><br><span class="hljs-number">1</span><br><span class="hljs-number">7</span> <span class="hljs-number">3</span><br>输出样例<span class="hljs-symbol">:</span><br><span class="hljs-number">8</span><br><br></code></pre></td></tr></table></figure>
+
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ol>
+<li>当我们的盘子数$j$多于弹珠数$i$时，即使我们每个盘子都放一个，也会有空出来的盘子，那么我们就可以将问题转换为$i$个盘子数$i$个弹珠有几种分法。</li>
+<li>当我们的盘子书$j$小于或等于$i$时，我们可以有两种选择：一种是现在每个盘子里至少放1个弹珠，那么问题可以转换为$i-j$个弹珠以及$j$个盘子有几种分法；另一种是我们允许空出来一个盘子（或者继续更多），那么问题就可以转换为在剩下$j-1$个盘子以及$i$个弹珠里有几种分法</li>
+</ol>
+<p>$$<br>dp[i][j] &#x3D; \begin{cases}dp[i][i] &amp; \ j&gt;i \ dp[i-j][j] + dp[i][j-1] &amp; j&lt;&#x3D;i\end{cases}<br>$$</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">210</span>,K = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> dp[N][N];<br><span class="hljs-type">int</span> n,k;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    cin&gt;&gt;n&gt;&gt;k;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i&lt;=n;i++)	dp[i][<span class="hljs-number">0</span>] = dp[<span class="hljs-number">0</span>][i] = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>;j&lt;=k;j++)&#123;<br>            <span class="hljs-keyword">if</span>(j&gt;i)	dp[i][j] = dp[i][i];<br>            <span class="hljs-keyword">else</span> dp[i][j] = dp[i-j][j] + dp[i][j<span class="hljs-number">-1</span>];<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;dp[n][k]&lt;&lt;endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="洛谷P1025"><a href="#洛谷P1025" class="headerlink" title="洛谷P1025"></a>洛谷P1025</h2><p><strong>题目描述</strong></p>
+<p>将整数 $n$ 分成 $k$ 份，且每份不能为空，任意两个方案不相同（不考虑顺序）。</p>
+<p>例如：$n&#x3D;7$，$k&#x3D;3$，下面三种分法被认为是相同的。</p>
+<p>$1,1,5$;<br>$1,5,1$;<br>$5,1,1$.</p>
+<p>问有多少种不同的分法。</p>
+<p><strong>输入格式</strong></p>
+<p>$n,k$ （$6&lt;n \le 200$，$2  \le k  \le  6$）</p>
+<p><strong>输出格式</strong></p>
+<p>$1$ 个整数，即不同的分法。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思路类似于分苹果</p>
+<ol>
+<li>当分割数$j$大于数$i$的时候,那么没有一种分法可行</li>
+<li>当分割数$j$等于数$i$的时候,那么只有一种分法</li>
+<li>当分割数$j$小于数$i$的时候,一种是可以先在每个盘子里面分一个，问题可转换为分割术$j$分割 数$i-j$；另一种是可以将盘子数减少一个(或者更多)</li>
+</ol>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">210</span>,K = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> dp[N][N];<br><span class="hljs-type">int</span> n,k;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    cin&gt;&gt;n&gt;&gt;k;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i&lt;=n;i++) dp[i][i] = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>;j&lt;=k;j++)&#123;<br>            dp[i][j] = dp[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] + dp[i - j][j];<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;dp[n][k]&lt;&lt;endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
 
                 
               </div>
@@ -301,11 +345,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
+        <a href="/tags/%E7%AE%97%E6%B3%95/" class="print-no-link">#算法</a>
+      
         <a href="/tags/%E4%BF%9D%E7%A0%94/" class="print-no-link">#保研</a>
       
         <a href="/tags/%E6%9C%BA%E8%AF%95/" class="print-no-link">#机试</a>
-      
-        <a href="/tags/%E7%AE%97%E6%B3%95/" class="print-no-link">#算法</a>
       
     </div>
   
@@ -361,6 +405,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/04/05/%E4%BF%9D%E7%A0%94%E4%B8%93%E4%B8%9A%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" title="保研专业知识复习">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">保研专业知识复习</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
