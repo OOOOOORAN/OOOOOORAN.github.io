@@ -355,7 +355,7 @@
 <p>flag为flag{Tr4nsp0sltiON_Clph3r_1s_3z}</p>
 <h1 id="FlareOn4-login"><a href="#FlareOn4-login" class="headerlink" title="FlareOn4 login"></a>FlareOn4 login</h1><p>第一次做java类的题目，挺简单的但还是记录一下，用vscode打开html文件后得到</p>
 <p><img src="https://s2.loli.net/2022/01/24/eOdtAF7XUlYJomL.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-15 163809"></p>
-<p>可知用了rot13加密，解密后就可以得到flag：flag{<a href="mailto:&#x43;&#x6c;&#105;&#101;&#110;&#116;&#83;&#x69;&#x64;&#x65;&#76;&#x6f;&#x67;&#105;&#110;&#x73;&#x41;&#114;&#101;&#69;&#x61;&#x73;&#x79;&#64;&#x66;&#108;&#x61;&#x72;&#x65;&#45;&#x6f;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;">&#x43;&#x6c;&#105;&#101;&#110;&#116;&#83;&#x69;&#x64;&#x65;&#76;&#x6f;&#x67;&#105;&#110;&#x73;&#x41;&#114;&#101;&#69;&#x61;&#x73;&#x79;&#64;&#x66;&#108;&#x61;&#x72;&#x65;&#45;&#x6f;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;</a>}</p>
+<p>可知用了rot13加密，解密后就可以得到flag：flag{<a href="mailto:&#x43;&#x6c;&#x69;&#x65;&#110;&#116;&#x53;&#x69;&#x64;&#x65;&#76;&#111;&#x67;&#105;&#110;&#x73;&#x41;&#x72;&#101;&#69;&#97;&#115;&#x79;&#x40;&#x66;&#x6c;&#97;&#114;&#101;&#x2d;&#111;&#110;&#46;&#x63;&#111;&#x6d;">&#x43;&#x6c;&#x69;&#x65;&#110;&#116;&#x53;&#x69;&#x64;&#x65;&#76;&#111;&#x67;&#105;&#110;&#x73;&#x41;&#x72;&#101;&#69;&#97;&#115;&#x79;&#x40;&#x66;&#x6c;&#97;&#114;&#101;&#x2d;&#111;&#110;&#46;&#x63;&#111;&#x6d;</a>}</p>
 <h1 id="FlareOn6-OverLong"><a href="#FlareOn6-OverLong" class="headerlink" title="FlareOn6 OverLong"></a>FlareOn6 OverLong</h1><p>首先看了下题目名字overlong和hint:</p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">The secret <span class="hljs-keyword">of</span> this next challenge is cleverly hidden. However, <span class="hljs-keyword">with</span> <span class="hljs-keyword">the</span> <span class="hljs-literal">right</span> approach, finding <span class="hljs-keyword">the</span> solution will <span class="hljs-keyword">not</span> take <span class="hljs-keyword">an</span> &lt;b&gt;overlong&lt;/b&gt; amount <span class="hljs-keyword">of</span> <span class="hljs-built_in">time</span>.<br></code></pre></td></tr></table></figure>
 
@@ -367,7 +367,7 @@
 <p>发程序在401160函数执行了28次，同时402008处的数据给出了，但特别多超过了28个</p>
 <p><img src="https://s2.loli.net/2022/01/24/siUNQ1bmMeEVRr2.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-16 101717"></p>
 <p>于是我开始分析，但没分析出来QAQ，看了题解后得知要使用动态调试。于是又开始跟着题解用OD开始解题，</p>
-<p>先是F9运行了下程序，发现窗口出现的英文字母的总和正好是0x1c，于是开始寻找含有0x1c的指令，并将其数值改大，就可以出现flag:flag{<a href="mailto:&#x49;&#95;&#x61;&#95;&#77;&#x5f;&#x74;&#95;&#104;&#95;&#101;&#x5f;&#x65;&#x5f;&#x6e;&#95;&#x43;&#95;&#x6f;&#95;&#68;&#x5f;&#105;&#95;&#110;&#95;&#x67;&#64;&#102;&#x6c;&#x61;&#x72;&#101;&#95;&#111;&#110;&#46;&#x63;&#x6f;&#109;">&#x49;&#95;&#x61;&#95;&#77;&#x5f;&#x74;&#95;&#104;&#95;&#101;&#x5f;&#x65;&#x5f;&#x6e;&#95;&#x43;&#95;&#x6f;&#95;&#68;&#x5f;&#105;&#95;&#110;&#95;&#x67;&#64;&#102;&#x6c;&#x61;&#x72;&#101;&#95;&#111;&#110;&#46;&#x63;&#x6f;&#109;</a>}</p>
+<p>先是F9运行了下程序，发现窗口出现的英文字母的总和正好是0x1c，于是开始寻找含有0x1c的指令，并将其数值改大，就可以出现flag:flag{<a href="mailto:&#x49;&#x5f;&#x61;&#x5f;&#77;&#95;&#116;&#95;&#x68;&#95;&#101;&#x5f;&#x65;&#x5f;&#110;&#x5f;&#x43;&#x5f;&#111;&#95;&#x44;&#x5f;&#x69;&#95;&#x6e;&#95;&#x67;&#x40;&#102;&#x6c;&#x61;&#114;&#101;&#95;&#x6f;&#x6e;&#x2e;&#x63;&#111;&#109;">&#x49;&#x5f;&#x61;&#x5f;&#77;&#95;&#116;&#95;&#x68;&#95;&#101;&#x5f;&#x65;&#x5f;&#110;&#x5f;&#x43;&#x5f;&#111;&#95;&#x44;&#x5f;&#x69;&#95;&#x6e;&#95;&#x67;&#x40;&#102;&#x6c;&#x61;&#114;&#101;&#95;&#x6f;&#x6e;&#x2e;&#x63;&#111;&#109;</a>}</p>
 <p>动态调试我刚刚接触，做的比较少，我对于使用题目要使用动态调试的情况的理解：第一个就是程序基本没有字符串或者没有给出明显的提示；二是程序本身比较复杂或者给出的数值很大很多，需要一个一个的动态给出。</p>
 <p>这是我目前的理解，以后可能做多了会有更多的理解。</p>
 <h1 id="MRCTF2020-hello-world-go"><a href="#MRCTF2020-hello-world-go" class="headerlink" title="[MRCTF2020]hello_world_go"></a>[MRCTF2020]hello_world_go</h1><p><img src="https://s2.loli.net/2022/01/24/134v5pJlgBWCkiw.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 114941"></p>
@@ -393,7 +393,7 @@
 <p><img src="https://s2.loli.net/2022/01/16/7DPbYnIXF3zq4N8.png" srcset="/img/loading.gif" lazyload alt="20210203123555487"></p>
 <p><img src="https://s2.loli.net/2022/01/16/hlFsgCfJOPNzrHV.png" srcset="/img/loading.gif" lazyload alt="20210203123510173"></p>
 <p>我一个一个改str1后再base64得到了flag</p>
-<p> flag{<a href="mailto:&#x73;&#x68;&#48;&#x30;&#116;&#105;&#x6e;&#103;&#x5f;&#x70;&#x68;&#x69;&#115;&#104;&#x5f;&#105;&#x6e;&#x5f;&#x61;&#95;&#98;&#97;&#x72;&#x72;&#101;&#108;&#x40;&#x66;&#x6c;&#97;&#x72;&#x65;&#x2d;&#111;&#110;&#x2e;&#x63;&#x6f;&#109;">&#x73;&#x68;&#48;&#x30;&#116;&#105;&#x6e;&#103;&#x5f;&#x70;&#x68;&#x69;&#115;&#104;&#x5f;&#105;&#x6e;&#x5f;&#x61;&#95;&#98;&#97;&#x72;&#x72;&#101;&#108;&#x40;&#x66;&#x6c;&#97;&#x72;&#x65;&#x2d;&#111;&#110;&#x2e;&#x63;&#x6f;&#109;</a>}</p>
+<p> flag{<a href="mailto:&#x73;&#x68;&#x30;&#x30;&#116;&#105;&#x6e;&#103;&#95;&#x70;&#x68;&#x69;&#x73;&#104;&#95;&#105;&#110;&#x5f;&#x61;&#x5f;&#x62;&#97;&#x72;&#x72;&#x65;&#x6c;&#x40;&#x66;&#x6c;&#x61;&#x72;&#101;&#x2d;&#x6f;&#110;&#x2e;&#x63;&#111;&#109;">&#x73;&#x68;&#x30;&#x30;&#116;&#105;&#x6e;&#103;&#95;&#x70;&#x68;&#x69;&#x73;&#104;&#95;&#105;&#110;&#x5f;&#x61;&#x5f;&#x62;&#97;&#x72;&#x72;&#x65;&#x6c;&#x40;&#x66;&#x6c;&#x61;&#x72;&#101;&#x2d;&#x6f;&#110;&#x2e;&#x63;&#111;&#109;</a>}</p>
 <p>后来看了题解按着题解的步骤，抄了下代码：</p>
 <h1 id="ACTF新生赛2020-Oruga"><a href="#ACTF新生赛2020-Oruga" class="headerlink" title="[ACTF新生赛2020]Oruga"></a>[ACTF新生赛2020]Oruga</h1><p>首先找关键函数，发现是迷宫题：</p>
 <p><img src="https://s2.loli.net/2022/01/16/ZElOLsWneyQi5NV.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-01-09 133709"></p>
@@ -446,6 +446,11 @@
           <div>2022年1月24日</div>
         </div>
       
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2024年3月31日</div>
+        </div>
       
       
         <div class="license-meta-item">
