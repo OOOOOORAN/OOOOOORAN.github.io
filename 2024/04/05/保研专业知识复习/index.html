@@ -24,8 +24,9 @@
 <meta property="og:description" content="机器学习通用近似定理定理：一个包含足够多隐层神经元的多层前馈网络，能以任意精度逼近任意的连续函数。 这个定理的两个关键点是： 1）神经网络是找到“近似的”结果，而非“精确的”函数。我们可以通过增加隐层神经元的个数来提升精度； 2） 被近似的函数必须是连续的。 也就是说，不管给定一个函数$f(x)$多复杂，通过神经网络都能找出任意精度的近似结果。即一个单隐层的神经网络可以近似预估大部分函数。理论是成">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic1.zhimg.com/80/v2-0b4c7b7dca418fe00f70fadec70e9ef0_720w.webp">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020042917374735.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDAyMzY1OA==,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2024-04-05T13:28:22.000Z">
-<meta property="article:modified_time" content="2024-04-06T02:47:40.833Z">
+<meta property="article:modified_time" content="2024-04-11T03:21:37.475Z">
 <meta property="article:author" content="HXDCHLl">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="算法">
@@ -224,7 +225,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          全文共有417字
+          全文共有718字
         
       </span>
     
@@ -236,7 +237,7 @@
         
         
           <!-- compatible with older versions-->
-          预计阅读时间为4分钟
+          预计阅读时间为6分钟
         
       </span>
     
@@ -286,6 +287,25 @@
 <h2 id="梯度消失和梯度爆炸"><a href="#梯度消失和梯度爆炸" class="headerlink" title="梯度消失和梯度爆炸"></a>梯度消失和梯度爆炸</h2><p>梯度消失与爆炸是机器学习中常见的难题，主要是出现在使用梯度下降与方向传播训练人工神经网络的时候。比如使用BP训练网络时，权重的更新值与误差函数的偏导数成比例，由于使用链式法则计算梯度，当每层的梯度都小于1时，前面层的梯度变化会越来越小，梯度值会消失，当每层的梯度都大于1时，前面层的梯度变化会越来越大，导致权重无法有效更新，甚至出现网络完全无法继续训练。</p>
 <p><strong>示例：</strong></p>
 <p><img src="https://pic1.zhimg.com/80/v2-0b4c7b7dca418fe00f70fadec70e9ef0_720w.webp" srcset="/img/loading.gif" lazyload alt="img"><br>$$<br>{w}^{‘}<em>{1} &#x3D; {w}</em>{1} + \eta {\delta}<em>{1} {x}</em>{1}<br>$$</p>
+<h2 id="ResNet相关知识"><a href="#ResNet相关知识" class="headerlink" title="ResNet相关知识"></a>ResNet相关知识</h2><p>在ResNet网络中有如下几个亮点：</p>
+<ol>
+<li><p>提出residual结构（残差结构），并搭建超深的网络结构(突破1000层)</p>
+</li>
+<li><p>使用Batch Normalization加速训练(丢弃dropout</p>
+</li>
+</ol>
+<p>在ResNet网络提出之前，传统的卷积神经网络都是通过将一系列卷积层与下采样层进行堆叠得到的。但是当堆叠到一定网络深度时，就会出现两个问题：</p>
+<ol>
+<li>梯度消失或梯度爆炸。</li>
+<li>退化问题(degradation problem)。</li>
+</ol>
+<p>关于Batch Normalization<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44023658/article/details/105844861">可以看这篇文章</a></p>
+<ol>
+<li><p>我们在图像预处理过程中通常会对图像进行标准化处理，这样能够加速网络的收敛，如下图所示，对于Conv1来说输入的就是满足某一分布的特征矩阵，但对于Conv2而言输入的feature map就不一定满足某一分布规律了<strong>（注意这里所说满足某一分布规律并不是指某一个feature map的数据要满足分布规律，理论上是指整个训练样本集所对应feature map的数据要满足分布规律）</strong>。而我们Batch Normalization的目的就是使我们的feature map满足均值为0，方差为1的分布规律。</p>
+<p><img src="https://img-blog.csdnimg.cn/2020042917374735.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDAyMzY1OA==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li></li>
+</ol>
 
                 
               </div>
@@ -331,7 +351,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年4月6日</div>
+          <div>2024年4月11日</div>
         </div>
       
       
@@ -361,6 +381,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/04/10/%E5%A4%8F%E4%BB%A4%E8%90%A5%E6%8A%95%E9%80%92%E6%83%85%E5%86%B5%E8%AE%B0%E5%BD%95/" title="夏令营投递情况记录">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">夏令营投递情况记录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
