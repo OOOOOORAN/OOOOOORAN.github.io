@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190119123546193.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1Z2FyYmxpc3M=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://pic.leetcode-cn.com/1624619180-vpyyqh-Picture1.png">
 <meta property="article:published_time" content="2024-04-02T12:09:31.981Z">
-<meta property="article:modified_time" content="2024-06-24T02:02:58.009Z">
+<meta property="article:modified_time" content="2024-06-24T02:06:18.020Z">
 <meta property="article:author" content="HXDCHLl">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="保研">
@@ -503,12 +503,12 @@
 <h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>线性筛保证每次合数只被筛一次，通过将合数分解成$x&#x3D;prime[j]*i$,其中$prime[j]$是$x$的最小质因子。</p>
 <p><strong>如何保证$prime[j]$是$x$的最小质因子？</strong></p>
 <p>当$i\space\ % \space\ prime[j]\space\ !&#x3D; 0$说明$prime[j]$比$i$的最小质因子还要小，当$i\space\ % \space\ prime[j]\space\ &#x3D;&#x3D; 0$的时候，$prime[j]$是$i$的质因子，因为我们是从小到达遍历质数，所以当$i\space\ % \space\ prime[j]\space\ &#x3D;&#x3D; 0$时停止遍历，就能保证$x&#x3D;prime[j]*i$中$prime[j]$是$x$的最小质因子，否则我们不能保证$prime[j]$是$i$和$x$的最小质因数。</p>
-<h1 id="扩展欧几里得算法"><a href="#扩展欧几里得算法" class="headerlink" title="扩展欧几里得算法"></a>扩展欧几里得算法</h1><h2 id="acwing877-扩展欧几里得算法"><a href="#acwing877-扩展欧几里得算法" class="headerlink" title="acwing877 扩展欧几里得算法"></a>acwing877 <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/879/">扩展欧几里得算法</a></h2><p>给定n对正整数${a}<em>{i}\space{b}</em>{i}$，对于每对数，求出一组${x}<em>{i}\space {y}</em>{i}$，使其满足 $a_{i}x_{i} + b_{i}y_{i} &#x3D; gcd(a_{i},b_{i})$</p>
-<h3 id="输入格式-8"><a href="#输入格式-8" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行包含整数 n𝑛。</p>
-<p>接下来 n𝑛 行，每行包含两个整数${a}<em>{i}\space{b}</em>{i}$。</p>
-<h3 id="输出格式-8"><a href="#输出格式-8" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出共 n行，对于每组${a}<em>{i}\space{b}</em>{i}$，求出一组满足条件的${x}<em>{i}\space {y}</em>{i}$，每组结果占一行。</p>
-<p>本题答案不唯一，输出任意满足条件的${x}<em>{i}\space {y}</em>{i}$均可。</p>
-<h3 id="数据范围-3"><a href="#数据范围-3" class="headerlink" title="数据范围"></a>数据范围</h3><p>$$1\le n\le 10^{5}$$<br>$$1 \le a_{i},b_{i} \le 2 \times10^{9}$$</p>
+<h1 id="扩展欧几里得算法"><a href="#扩展欧几里得算法" class="headerlink" title="扩展欧几里得算法"></a>扩展欧几里得算法</h1><h2 id="acwing877-扩展欧几里得算法"><a href="#acwing877-扩展欧几里得算法" class="headerlink" title="acwing877 扩展欧几里得算法"></a>acwing877 <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/879/">扩展欧几里得算法</a></h2><p>给定$n$对正整数${a}<em>{i} \space {b}</em>{i}$，对于每对数，求出一组${x}<em>{i}\space {y}</em>{i}$，使其满足 $a_{i} x_{i} + b_{i} y_{i} &#x3D; gcd(a_{i},b_{i})$</p>
+<h3 id="输入格式-8"><a href="#输入格式-8" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行包含整数 n。</p>
+<p>接下来 $n$ 行，每行包含两个整数${a}<em>{i} \space {b}</em>{i}$。</p>
+<h3 id="输出格式-8"><a href="#输出格式-8" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出共 n行，对于每组${a}<em>{i} \space {b}</em>{i}$，求出一组满足条件的${x}<em>{i} \space  {y}</em>{i}$，每组结果占一行。</p>
+<p>本题答案不唯一，输出任意满足条件的${x}<em>{i} \space {y}</em>{i}$均可。</p>
+<h3 id="数据范围-3"><a href="#数据范围-3" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le n\le 10^{5}$<br>$1 \le a_{i},b_{i} \le 2 \times10^{9}$</p>
 <h3 id="输入样例：-3"><a href="#输入样例：-3" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">2</span><br><span class="hljs-symbol">4 </span><span class="hljs-number">6</span><br><span class="hljs-symbol">8 </span><span class="hljs-number">18</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="输出样例：-3"><a href="#输出样例：-3" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs diff"><span class="hljs-deletion">-1 1</span><br><span class="hljs-deletion">-2 1</span><br></code></pre></td></tr></table></figure>
@@ -521,7 +521,7 @@
 <h3 id="输出格式-9"><a href="#输出格式-9" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出共 n𝑛行，每组数据输出一个整数表示一个满足条件的$x_{i}$，如果无解则输出 <code>impossible</code>。</p>
 <p>每组数据结果占一行，结果可能不唯一，输出任意一个满足条件的结果均可。</p>
 <p>输出答案必须在 int范围之内。</p>
-<h3 id="数据范围-4"><a href="#数据范围-4" class="headerlink" title="数据范围"></a>数据范围</h3><p>$$1\le n \le 10^{5}$$<br>$$1 \le a_{i},b_{i},m_{i} \le 2 \times 10^{9}$$</p>
+<h3 id="数据范围-4"><a href="#数据范围-4" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le n \le 10^{5}$<br>$1 \le a_{i},b_{i},m_{i} \le 2 \times 10^{9}$</p>
 <h3 id="输入样例：-4"><a href="#输入样例：-4" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">2</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">3</span> <span class="hljs-number">6</span><br><span class="hljs-symbol">4 </span><span class="hljs-number">3</span> <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="输出样例：-4"><a href="#输出样例：-4" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs diff">impossible<br><span class="hljs-deletion">-3</span><br></code></pre></td></tr></table></figure>
