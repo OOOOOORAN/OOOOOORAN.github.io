@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190119123546193.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1Z2FyYmxpc3M=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://pic.leetcode-cn.com/1624619180-vpyyqh-Picture1.png">
 <meta property="article:published_time" content="2024-04-02T12:09:31.981Z">
-<meta property="article:modified_time" content="2024-06-24T02:13:10.808Z">
+<meta property="article:modified_time" content="2024-06-24T02:14:47.394Z">
 <meta property="article:author" content="HXDCHLl">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="保研">
@@ -503,9 +503,9 @@
 <h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><p>线性筛保证每次合数只被筛一次，通过将合数分解成$x&#x3D;prime[j]*i$,其中$prime[j]$是$x$的最小质因子。</p>
 <p><strong>如何保证$prime[j]$是$x$的最小质因子？</strong></p>
 <p>当$i\space\ % \space\ prime[j]\space\ !&#x3D; 0$说明$prime[j]$比$i$的最小质因子还要小，当$i\space\ % \space\ prime[j]\space\ &#x3D;&#x3D; 0$的时候，$prime[j]$是$i$的质因子，因为我们是从小到达遍历质数，所以当$i\space\ % \space\ prime[j]\space\ &#x3D;&#x3D; 0$时停止遍历，就能保证$x&#x3D;prime[j]*i$中$prime[j]$是$x$的最小质因子，否则我们不能保证$prime[j]$是$i$和$x$的最小质因数。</p>
-<h1 id="扩展欧几里得算法"><a href="#扩展欧几里得算法" class="headerlink" title="扩展欧几里得算法"></a>扩展欧几里得算法</h1><h2 id="acwing877-扩展欧几里得算法"><a href="#acwing877-扩展欧几里得算法" class="headerlink" title="acwing877 扩展欧几里得算法"></a>acwing877 <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/879/">扩展欧几里得算法</a></h2><p>给定$n$对正整数$a_{i} b_{i}$ 对于每对数，求出一组$x_{i} y_{i}$，使其满足$a_{i} x_{i} + b_{i} y_{i} &#x3D; gcd(a_{i},b_{i})$</p>
+<h1 id="扩展欧几里得算法"><a href="#扩展欧几里得算法" class="headerlink" title="扩展欧几里得算法"></a>扩展欧几里得算法</h1><h2 id="acwing877-扩展欧几里得算法"><a href="#acwing877-扩展欧几里得算法" class="headerlink" title="acwing877 扩展欧几里得算法"></a>acwing877 <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/879/">扩展欧几里得算法</a></h2><p>给定$n$对正整数$a_{i} b_{i}$，对于每对数，求出一组$x_{i} y_{i}$，使其满足$a_{i} x_{i} + b_{i} y_{i} &#x3D; gcd(a_{i},b_{i})$</p>
 <h3 id="输入格式-8"><a href="#输入格式-8" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行包含整数  $n$。</p>
-<p>接下来 $n$ 行，每行包含两个整数${a}<em>{i} \space {b}</em>{i}$。</p>
+<p>接下来 $n$ 行，每行包含两个整数$a_{i} b_{i}$</p>
 <h3 id="输出格式-8"><a href="#输出格式-8" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出共$n$行，对于每组$a_{i} b_{i}$，求出一组满足条件的$x_{i} y_{i}$，每组结果占一行。</p>
 <p>本题答案不唯一，输出任意满足条件的$x_{i} y_{i}$均可。</p>
 <h3 id="数据范围-3"><a href="#数据范围-3" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le n\le 10^{5}$<br>$1 \le a_{i} ,b_{i} \le 2 \times 10^{9}$</p>
@@ -614,7 +614,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/05/%E4%BF%9D%E7%A0%94%E4%B8%93%E4%B8%9A%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" title="保研专业知识复习">
+                      <a href="/2024/04/05/NLP%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/" title="保研专业知识复习">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">保研专业知识复习</span>
                         <span class="visible-mobile">上一篇</span>
