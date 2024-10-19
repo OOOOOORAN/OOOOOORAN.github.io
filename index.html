@@ -186,7 +186,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Talk is cheap. Show me the code"></span>
+            <span id="subtitle" data-typed-text="Get busy living or get busy dying."></span>
           
         </div>
 
@@ -312,13 +312,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2022/04/27/ctf%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/" target="_self">
-          misc做题记录
+        <a href="/2022/04/27/ctf%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%952/" target="_self">
+          ctf做题记录2
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/04/27/ctf%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/04/27/ctf%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%952/" target="_self">
         <div>
           jarvisoj_level2_x64 checksec后发现是64位NX_ENABLE的程序，打开ida后发现就是一个简单的64位rop，题目用意应该是让我们熟悉下64位和32位rop构造的区别  在64位中，函数传参通过寄存器，所以可以在函数找到pop_rdi_ret的地址，然后就可以把str_bin_sh传入system函数中  于是exp可以这样构造 12345678910from pwn
         </div>
@@ -354,13 +354,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2022/04/08/%E7%AE%80%E5%8D%95%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/" target="_self">
-          简单做题记录
+        <a href="/2022/04/08/ctf%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%951/" target="_self">
+          ctf做题记录1
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/04/08/%E7%AE%80%E5%8D%95%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/04/08/ctf%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%951/" target="_self">
         <div>
           xctf babyre第一次做smc程序，看了wp学了下打patch。 打开ida启动反汇编就发现judge是全程序的关键，但是judge在开头进行了异或操作，导致反汇编不出来。于是可以用ida打patch来让ida正确反汇编函数。   如果是花指令，就可以使用edit-patch programmer将字节码改成nop跳过花指令。如果是需要编写脚本来正确反编译，可以在file-script co
         </div>
