@@ -765,7 +765,7 @@ sup > a::before,
   padding: 3rem 0;
 }
 html {
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 0.02em;
 }
 html,
@@ -872,7 +872,7 @@ i.iconfont {
     --link-hover-bg-color: #364151;
     --line-color: #435266;
     --navbar-bg-color: #1f3144;
-    --navbar-text-color: #ffffff;
+    --navbar-text-color: #d0d0d0;
     --subtitle-color: #d0d0d0;
     --scrollbar-color: #687582;
     --scrollbar-hover-color: #9da8b3;
@@ -910,7 +910,7 @@ i.iconfont {
     --link-hover-bg-color: #364151;
     --line-color: #435266;
     --navbar-bg-color: #1f3144;
-    --navbar-text-color: #ffffff;
+    --navbar-text-color: #d0d0d0;
     --subtitle-color: #d0d0d0;
     --scrollbar-color: #687582;
     --scrollbar-hover-color: #9da8b3;
